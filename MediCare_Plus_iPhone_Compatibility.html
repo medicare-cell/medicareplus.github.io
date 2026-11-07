@@ -1,0 +1,2766 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediCare+</title>
+
+<style>
+/* CSS lama kamu tetap di sini */
+
+/* CSS PROFIL */
+.profil-header {
+    background: linear-gradient(135deg, #087f78, #0b5e58);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+/* CSS profil lainnya ditempel di sini */
+</style><style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f8f7;color:#263d3b}
+button,input{font:inherit}
+button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(8,127,120,.12)}
+.hidden{display:none!important}
+.container{width:100%;max-width:440px;margin:auto;padding:24px 20px}
+.brand{text-align:center;color:#087f78;font-size:30px;font-weight:bold;margin:20px 0}
+.card{background:white;padding:24px;border-radius:20px;box-shadow:0 5px 20px #0000000c}
+h2{margin-top:0;color:#087f78}
+p{line-height:1.6;color:#647875}
+.field{margin:16px 0}
+label{display:block;font-size:14px;margin-bottom:7px}
+input{width:100%;padding:13px;border:1px solid #d5e3e0;border-radius:10px;outline-color:#087f78}
+.btn{width:100%;padding:14px;border:0;border-radius:11px;background:#087f78;color:white;font-weight:bold;margin-top:12px}
+.btn-light{background:#e4f3ef;color:#087f78}
+.link{color:#087f78;text-decoration:underline;cursor:pointer}
+.center{text-align:center}
+header{background:#087f78;color:white;padding:22px;border-radius:0 0 24px 24px}
+header h2{color:white;margin:24px 0 8px}
+main{max-width:850px;margin:auto;padding:22px 16px 105px}
+.search{margin:10px 0 25px}
+.item{background:white;border:1px solid #e0ebe8;border-radius:15px;padding:16px;cursor:pointer}
+.item h3{color:#087f78;font-size:15px}
+.item p{font-size:12px;margin-bottom:0}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.item {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 150px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e0ebe8;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.item h3 {
+  margin: 0;
+  color: #087f78;
+  font-size: 15px;
+}
+
+.item p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 360px) {
+  .menu {
+    grid-template-columns: 1fr;
+  }
+}
+
+.notice{padding:15px;background:#e0f3ef;border-radius:14px;margin-top:20px;font-size:13px;line-height:1.6}
+nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:850px;display:flex;justify-content:space-around;align-items:center;background:white;padding:12px 4px calc(12px + env(safe-area-inset-bottom));border-top:1px solid #e0ebe8;box-shadow:0 -4px 14px #0000000a;z-index:1000}
+nav button{flex:1;min-width:0;background:none;border:0;color:#087f78;font-size:12px;line-height:1.5;padding:4px 0}
+@media(min-width:700px){.menu{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== TAMPILAN PROFIL MEDICARE+ ===== */
+
+.profil-header {
+    background: linear-gradient(135deg, #087f78, #075e59);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(8, 127, 120, 0.15);
+}
+
+.profil-avatar {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.profil-header h2 {
+    color: white;
+    margin: 8px 0;
+    font-size: 23px;
+}
+
+.profil-header p {
+    color: #e0f5f1;
+    margin: 8px 0 0;
+}
+
+.profil-card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.profil-card h3,
+.profil-subtitle {
+    color: #087f78;
+    margin: 0 0 16px;
+}
+
+.profil-info {
+    padding: 12px 0;
+    border-bottom: 1px solid #edf2f0;
+}
+
+.profil-info:last-child {
+    border-bottom: none;
+}
+
+.profil-info span {
+    display: block;
+    color: #647875;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.profil-info p {
+    color: #263d39;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.profil-menu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 15px;
+    margin: 9px 0;
+    border: 1px solid #e3eeeb;
+    border-radius: 13px;
+    background: white;
+    color: #24443e;
+}
+
+.profil-menu:active {
+    background: #eaf7f4;
+}
+
+.profil-menu small {
+    display: block;
+    color: #71817d;
+    margin-top: 4px;
+}
+
+.profil-menu span:last-child {
+    margin-left: auto;
+}
+
+.profil-header,
+.profil-card,
+.profil-menu {
+    box-sizing: border-box;
+}
+
+/* Beranda MediCare+ */
+.beranda-sapaan {
+    margin: 18px 0;
+    padding: 22px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #dff7ef, #f2fbf7);
+    border: 1px solid #cceee2;
+}
+
+.beranda-label {
+    margin: 0 0 10px;
+    color: #27866f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.beranda-sapaan h2 {
+    margin: 0 0 8px;
+    color: #176b59;
+    font-size: 23px;
+}
+
+.beranda-sapaan p:last-child {
+    margin: 0;
+    color: #52766d;
+    line-height: 1.6;
+}
+
+.beranda-pintasan {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 18px 0 24px;
+}
+
+.pintasan-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 13px 10px;
+    background: white;
+    border: 1px solid #e1eee9;
+    border-radius: 16px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(26, 91, 73, 0.06);
+}
+
+.pintasan-card:active {
+    transform: scale(0.97);
+}
+
+.pintasan-ikon {
+    font-size: 24px;
+}
+
+.pintasan-judul {
+    color: #205e50;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.pintasan-keterangan {
+    color: #71847e;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.beranda-subjudul {
+    margin: 22px 0 12px;
+}
+
+.beranda-subjudul h3 {
+    margin-bottom: 5px;
+    color: #205e50;
+}
+
+.beranda-subjudul p {
+    margin-top: 0;
+    color: #71847e;
+    font-size: 13px;
+}
+
+@media (max-width: 360px) {
+    .beranda-pintasan {
+        gap: 6px;
+    }
+
+    .pintasan-card {
+        padding: 10px 7px;
+    }
+
+    .pintasan-judul {
+        font-size: 12px;
+    }
+}
+
+.kategori-kesehatan {
+    margin: 18px 0 24px;
+}
+
+.kategori-kesehatan h3 {
+    margin-bottom: 6px;
+    color: #087f78;
+}
+
+.kategori-kesehatan p {
+    margin-top: 0;
+    font-size: 13px;
+}
+
+.kategori-tombol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.kategori-tombol button {
+    padding: 10px 13px;
+    border: 1px solid #cce8df;
+    border-radius: 22px;
+    background: white;
+    color: #087f78;
+    font-size: 13px;
+}
+
+.kategori-tombol button:hover {
+    background: #e4f5ef;
+}
+
+</style>
+
+<style id="medicare-visual-refresh">
+:root{--mc-primary:#087f78;--mc-primary-dark:#075e59;--mc-mint:#e8f7f3;--mc-ink:#203b38;--mc-muted:#667c78;--mc-border:#dcebe7;--mc-shadow:0 12px 32px rgba(15,75,67,.09)}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(180deg,#eff9f6 0,#f7fbfa 260px,#f4f8f7 100%);color:var(--mc-ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.05px}
+button,input,select,textarea{font:inherit;touch-action:manipulation}
+button{transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+button:active{transform:scale(.985)}
+.container{max-width:480px;padding:clamp(18px,5vw,28px) 18px}
+.brand{font-size:clamp(28px,7vw,34px);letter-spacing:-1px;margin:22px 0 24px;font-weight:800}
+.card,.profil-card{border:1px solid rgba(220,235,231,.9);border-radius:24px;box-shadow:var(--mc-shadow);padding:clamp(20px,5vw,28px)}
+h2{letter-spacing:-.45px;line-height:1.25;font-size:clamp(22px,5vw,28px)}
+p{line-height:1.65;color:var(--mc-muted)}
+.field{margin:18px 0}
+label{font-weight:650;color:#35534e;font-size:13px}
+input,select,textarea{background:#fbfefd;border:1px solid #d5e5e0;border-radius:13px;padding:14px 15px;min-height:48px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--mc-primary);box-shadow:0 0 0 3px rgba(8,127,120,.12);outline:0}
+.btn{min-height:48px;border-radius:14px;background:linear-gradient(135deg,#0a9187,#08736c);box-shadow:0 7px 16px rgba(8,127,120,.16);padding:14px 16px;font-weight:700;letter-spacing:.1px}
+.btn:hover{box-shadow:0 9px 20px rgba(8,127,120,.22);filter:brightness(1.02)}
+.btn-light{background:#e8f7f3;color:#08766e;box-shadow:none;border:1px solid #d7eee7}
+.link{font-weight:650;text-underline-offset:3px}
+header{background:radial-gradient(circle at 90% 0,rgba(255,255,255,.18),transparent 36%),linear-gradient(135deg,#0b9387,#075e59);padding:26px 20px 28px;border-radius:0 0 30px 30px;box-shadow:0 10px 25px rgba(7,94,89,.12)}
+header h2{font-size:26px;letter-spacing:-.5px}
+main{max-width:900px;padding:24px 17px 115px}
+.search{margin:14px 0 24px}
+.menu{gap:14px}
+.item{border:1px solid var(--mc-border);border-radius:19px;padding:18px;min-height:156px;box-shadow:0 5px 16px rgba(24,73,65,.04);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.item:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(24,73,65,.09);border-color:#b9ddd3}
+.item h3{font-size:15px;line-height:1.4;color:#08766e}
+.item p{font-size:12.5px;line-height:1.55;color:#6b807b}
+.notice{background:linear-gradient(135deg,#e6f7f2,#f1fbf8);border:1px solid #d2eee5;border-radius:16px;color:#315d55;padding:16px}
+nav{max-width:900px;padding:10px 8px calc(10px + env(safe-area-inset-bottom));border:1px solid #e1eeea;border-bottom:0;border-radius:20px 20px 0 0;box-shadow:0 -8px 25px rgba(20,70,60,.08);backdrop-filter:blur(12px)}
+nav button{font-weight:650;color:#55756f;border-radius:12px;padding:8px 3px}
+nav button:hover{background:#edf8f5;color:#08766e}
+.profil-header{background:radial-gradient(circle at 90% 0,rgba(255,255,255,.2),transparent 35%),linear-gradient(135deg,#0b9387,#075e59);border-radius:24px;padding:30px 20px;box-shadow:var(--mc-shadow)}
+.profil-card{padding:20px;margin-bottom:16px}
+.profil-menu{border-radius:15px;border-color:#e0ece8;padding:15px;transition:background .15s,border-color .15s}
+.profil-menu:hover{background:#f2fbf8;border-color:#cce8df}
+@media(min-width:700px){.menu{grid-template-columns:repeat(3,minmax(0,1fr))}header{padding-left:max(24px,calc((100% - 850px)/2));padding-right:max(24px,calc((100% - 850px)/2))}}
+@media(max-width:380px){.item{padding:14px;min-height:145px}.card{padding:20px}.brand{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Perbaikan final kartu layanan MediCare+ */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+.menu .item {
+    -webkit-tap-highlight-color: rgba(8,127,120,.12);
+    touch-action: manipulation;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 150px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-wrap: anywhere;
+}
+.menu .item h3 { margin: 0; line-height: 1.4; }
+.menu .item p { margin: 0; line-height: 1.5; }
+@media (max-width: 360px) { .menu { grid-template-columns: 1fr; gap: 10px; } }
+
+/* Kartu tambahan: tanda bahaya dan artikel edukasi */
+#featurePanel ul { padding-left: 22px; line-height: 1.65; }
+#featurePanel li { margin: 8px 0; }
+.artikel-edukasi { margin: 10px 0; padding: 13px 15px; border: 1px solid #dcebe7; border-radius: 13px; background: #fff; }
+.artikel-edukasi summary { cursor: pointer; color: #08766e; font-weight: 700; }
+.artikel-edukasi p { margin-bottom: 0; }
+
+/* Penyempurnaan kartu detail obat */
+#hasilPencarian > div, #hasilObat > div {
+    line-height: 1.55;
+}
+#hasilPencarian p, #hasilObat p {
+    overflow-wrap: anywhere;
+}
+</style>
+
+</head>
+<body>
+
+<!-- HALAMAN WELCOME -->
+<section id="welcome" class="container">
+    <div class="brand">💚 MediCare+</div>
+    <div class="card center">
+        <h2>Teman Sehatmu, Setiap Hari</h2>
+        <p>Cari informasi obat, kenali keluhan, dan pantau kesehatanmu dalam satu tempat.</p>
+        <button class="btn" onclick="showPage('register')">Mulai Sekarang</button>
+        <button class="btn btn-light" onclick="showPage('login')">Saya Sudah Punya Akun</button>
+        <p style="font-size:12px">Informasi kesehatan untuk membantu, bukan menggantikan tenaga medis.</p>
+    </div>
+</section>
+
+<!-- HALAMAN DAFTAR -->
+<section id="register" class="container hidden">
+    <div class="brand">💚 MediCare+</div>
+    <div class="card">
+        <h2>Buat Akun</h2>
+        <p>Daftar untuk mulai menggunakan MediCare+.</p>
+        <form id="registerForm">
+            <div class="field">
+                <label for="regName">Nama lengkap</label>
+                <input id="regName" required autocomplete="name" placeholder="Masukkan nama">
+            </div>
+            <div class="field">
+                <label for="regEmail">Email</label>
+                <input id="regEmail" type="email" required autocomplete="email" placeholder="nama@email.com">
+            </div>
+            <div class="field">
+                <label for="regPassword">Password</label>
+                <input id="regPassword" type="password" required minlength="6" autocomplete="new-password" placeholder="Minimal 6 karakter">
+            </div>
+            <button class="btn" type="submit">Daftar</button>
+        </form>
+        <p class="center">Sudah punya akun? <span class="link" onclick="showPage('login')">Login</span></p>
+        <p class="center"><span class="link" onclick="showPage('welcome')">Kembali</span></p>
+    </div>
+</section>
+
+<!-- HALAMAN LOGIN -->
+<section id="login" class="container hidden">
+    <div class="brand">💚 MediCare+</div>
+    <div class="card">
+        <h2>Selamat Datang Kembali</h2>
+        <p>Masuk ke akun MediCare+ milikmu.</p>
+        <form id="loginForm">
+            <div class="field">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" required autocomplete="email" placeholder="nama@email.com">
+            </div>
+            <div class="field">
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" required autocomplete="current-password" placeholder="Masukkan password">
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <p class="center">Belum punya akun? <span class="link" onclick="showPage('register')">Daftar</span></p>
+        <p class="center"><span class="link" onclick="showPage('welcome')">Kembali</span></p>
+    </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="hidden">
+    <header id="headerBeranda">
+        <div style="font-size:23px;font-weight:bold">💚 MediCare+ <button onclick="logout()" style="float:right;background:#ffffff25;color:white;border:0;padding:8px;border-radius:8px">Keluar</button></div>
+        <h2 id="greeting">Halo!</h2>
+        <p style="color:white">Ada yang bisa kami bantu hari ini?</p>
+    </header>
+    <main>
+        <div id="kontenBeranda">
+        <input class="search" id="searchInput" placeholder="Cari obat atau keluhan kesehatan...">
+
+<div class="kategori-kesehatan">
+    <h3>🔎 Cari Berdasarkan Keluhan</h3>
+    <p>Pilih keluhan untuk melihat informasi awal.</p>
+
+    <div class="kategori-tombol">
+        <button onclick="cariCepat('demam')">🌡️ Demam</button>
+        <button onclick="cariCepat('batuk')">😷 Batuk</button>
+        <button onclick="cariCepat('sakit kepala')">🤕 Sakit Kepala</button>
+        <button onclick="cariCepat('diare')">💧 Diare</button>
+        <button onclick="cariCepat('alergi')">🌿 Alergi</button>
+        <button onclick="cariCepat('nyeri haid')">💗 Nyeri Haid</button>
+    </div>
+</div>
+
+<!-- Pintasan cepat MediCare+ -->
+<div class="beranda-sapaan">
+    <p class="beranda-label">💚 MEDICARE+ HEALTH</p>
+    <h2 id="sapaanBeranda">Halo, selamat datang!</h2>
+    <p>Temukan informasi kesehatan dan jaga dirimu hari ini.</p>
+</div>
+
+<div class="beranda-pintasan">
+    <button class="pintasan-card" onclick="bukaMenu('favorit')">
+        <span class="pintasan-ikon">❤️</span>
+        <span class="pintasan-judul">Favorit</span>
+        <span class="pintasan-keterangan">Obat tersimpan</span>
+    </button>
+
+    <button class="pintasan-card" onclick="bukaMenu('riwayat')">
+        <span class="pintasan-ikon">📋</span>
+        <span class="pintasan-judul">Riwayat</span>
+        <span class="pintasan-keterangan">Pencarian sebelumnya</span>
+    </button>
+
+    <button class="pintasan-card" onclick="bukaMenu('pengingat')">
+        <span class="pintasan-ikon">🔔</span>
+        <span class="pintasan-judul">Pengingat</span>
+        <span class="pintasan-keterangan">Jadwal obat</span>
+    </button>
+</div>
+
+<div class="beranda-subjudul">
+    <h3>🩺 Jelajahi Layanan</h3>
+    <p>Pilih layanan yang ingin kamu gunakan.</p>
+</div>
+
+        <h3>Layanan Kesehatan</h3>
+        <div class="menu">
+            <div class="item" onclick="showFeature('Cari Obat','Cari nama obat untuk melihat informasi edukasi yang tersedia.')">
+                <div style="font-size:27px">💊</div><h3>Cari Obat</h3><p>Informasi obat dan kegunaannya.</p>
+            </div>
+            <div class="item" onclick="showGejala()">
+    <div style="font-size:27px">🩺</div>
+    <h3>Cek Gejala</h3>
+    <p>Pelajari informasi keluhan awal.</p>
+</div>
+            <div class="item" onclick="bukaCatatanKesehatan()">
+                <div style="font-size:27px">❤️</div><h3>Pantau Kesehatan</h3><p>Catatan kesehatan harian.</p>
+            </div>
+            <div class="item" onclick="showFeature('Pertolongan Pertama','Pelajari panduan pertolongan pertama dari sumber tepercaya.')">
+                <div style="font-size:27px">🩹</div><h3>Pertolongan Pertama</h3><p>Panduan tindakan awal.</p>
+            </div>
+            <div class="item" onclick="tampilkanTandaBahaya()">
+                <div style="font-size:27px">🚨</div><h3>Tanda Bahaya</h3><p>Kenali gejala yang perlu pertolongan segera.</p>
+            </div>
+            <div class="item" onclick="tampilkanArtikelEdukasi()">
+                <div style="font-size:27px">📚</div><h3>Artikel Edukasi</h3><p>Tips sederhana menjaga kesehatan.</p>
+            </div>
+        </div>
+        <div id="featurePanel" class="notice hidden"></div>
+        <div class="notice"><b>💡 Tips Kesehatan</b><br>Cuci tangan dengan sabun dan air mengalir untuk membantu mencegah penyebaran penyakit.</div>
+        </div>
+<div id="halamanMenu" class="hidden"></div>
+
+<div id="catatanKesehatan" class="hidden">
+    <h2>❤️ Catatan Kesehatan</h2>
+    <p>Catat keluhanmu untuk memantau perkembangannya.</p>
+
+    <label for="catatanKeluhan">Keluhan yang dirasakan</label>
+    <input id="catatanKeluhan" class="search"
+           placeholder="Contoh: sakit kepala">
+
+    <label for="catatanTingkat">Tingkat keluhan (1–10)</label>
+    <input id="catatanTingkat" type="number"
+           min="1" max="10" value="3" class="search">
+
+    <label for="catatanKeterangan">Keterangan</label>
+    <textarea id="catatanKeterangan" class="search"
+              placeholder="Sejak kapan dan apa yang dirasakan?"></textarea>
+
+    <button class="btn" onclick="simpanCatatanKesehatan()">
+        💾 Simpan Catatan
+    </button>
+
+    <div id="daftarCatatanKesehatan"></div>
+</div>
+    </main>
+    
+
+<nav>
+    <button onclick="bukaMenu('beranda')">🏠<br>Beranda</button>
+    <button onclick="bukaMenu('riwayat')">📋<br>Riwayat</button>
+    <button onclick="bukaMenu('favorit')">❤️<br>Favorit</button>
+    <button onclick="bukaMenu('pengingat')">🔔<br>Pengingat</button>
+    <button onclick="bukaMenu('profil')">👤<br>Profil</button>
+</nav>
+</section>
+
+<script>
+
+/* Penyimpanan aman untuk Safari/iOS dan pratinjau file. */
+const mcStorage = (() => {
+  const sementara = Object.create(null);
+  function nativeStorage() { try { return window.localStorage; } catch (e) { return null; } }
+  return {
+    getItem(key) { try { const st = nativeStorage(); return st ? st.getItem(key) : (Object.prototype.hasOwnProperty.call(sementara,key) ? sementara[key] : null); } catch (e) { return Object.prototype.hasOwnProperty.call(sementara,key) ? sementara[key] : null; } },
+    setItem(key,value) { const v=String(value); sementara[key]=v; try { const st=nativeStorage(); if(st) st.setItem(key,v); } catch(e) {} },
+    removeItem(key) { delete sementara[key]; try { const st=nativeStorage(); if(st) st.removeItem(key); } catch(e) {} },
+    clear() { Object.keys(sementara).forEach(k=>delete sementara[k]); try { const st=nativeStorage(); if(st) st.clear(); } catch(e) {} }
+  };
+})();
+
+
+let menuAktif = 'beranda';
+
+// Terjemahan antarmuka MediCare+. Teks medis yang belum ada di kamus
+// akan tetap tampil dalam bahasa aslinya agar informasi tidak berubah makna.
+const kamusBahasa = {
+  'Beranda':'Home','Riwayat':'History','Favorit':'Favorites','Pengingat':'Reminders','Profil':'Profile','Keluar':'Log Out',
+  'Teman Sehatmu, Setiap Hari':'Your Health Companion, Every Day',
+  'Cari informasi obat, kenali keluhan, dan pantau kesehatanmu dalam satu tempat.':'Find medicine information, understand symptoms, and track your health in one place.',
+  'Mulai Sekarang':'Get Started','Saya Sudah Punya Akun':'I Already Have an Account',
+  'Informasi kesehatan untuk membantu, bukan menggantikan tenaga medis.':'Health information to help you, not replace healthcare professionals.',
+  'Buat Akun':'Create Account','Daftar untuk mulai menggunakan MediCare+.':'Sign up to start using MediCare+.',
+  'Nama Lengkap':'Full Name','Email':'Email','Kata Sandi':'Password','Masuk':'Log In','Login':'Log In',
+  '📋 Riwayat Pencarian':'📋 Search History','Belum ada riwayat pencarian.':'No search history yet.',
+  '❤️ Obat Favorit':'❤️ Favorite Medicines','Belum ada obat favorit yang disimpan.':'No favorite medicines saved.',
+  '🔔 Pengingat Obat':'🔔 Medication Reminders','🔔 Aktifkan Notifikasi':'🔔 Enable Notifications',
+  '💊 Tambah Jadwal Obat':'💊 Add Medication Schedule','Nama Obat':'Medicine Name','Nama obat':'Medicine name',
+  'Dosis sesuai resep':'Prescribed Dose','Dosis obat':'Medicine dose','Tanggal Minum':'Medication Date',
+  'Jam Minum':'Medication Time','Simpan Jadwal':'Save Schedule','📋 Jadwal Obat Saya':'📋 My Medication Schedule',
+  'Belum ada jadwal obat.':'No medication schedules yet.','Pengguna MediCare+':'MediCare+ User',
+  '💚 Member MediCare+':'💚 MediCare+ Member','⚙️ Informasi Akun':'⚙️ Account Information',
+  '📧 Email':'📧 Email','🩺 Aplikasi':'🩺 Application','Pengaturan':'Settings','Edit Profil':'Edit Profile',
+  'Ubah nama pengguna':'Edit your profile information','Bahasa':'Language','Bahasa Indonesia':'English',
+  'Riwayat Aktivitas':'Activity History','Lihat pencarian sebelumnya':'View previous searches',
+  '🔐 Keamanan Akun':'🔐 Account Security','Jaga kerahasiaan informasi akunmu.':'Keep your account information private.',
+  'Ubah Kata Sandi':'Change Password','Keluar dari Akun':'Log Out',
+  'MediCare+ • Teman Sehatmu 💚':'MediCare+ • Your Health Companion 💚',
+  'Tips Kesehatan':'Health Tips','Pertolongan Pertama':'First Aid','Panduan tindakan awal.':'First-aid guidance.',
+  'Cari penyakit atau keluhan...':'Search for a condition or symptom...','Cari penyakit':'Search conditions',
+  'Hasil Pencarian':'Search Results','Gejala':'Symptoms','Perawatan':'Care','Tanda Bahaya':'Warning Signs','Pilih keluhan':'Select a symptom','Lihat Arahan':'View Guidance','Pilih keluhan yang ingin kamu pelajari:':'Choose a symptom to learn about:','Silakan pilih keluhan terlebih dahulu.':'Please select a symptom first.','Informasi untuk keluhan ini belum tersedia.':'Information for this symptom is not available yet.','Pemeriksaan Keluhan Awal':'Initial Symptom Check','Perawatan Mandiri':'Self-care','Informasi Sakit Kepala':'Headache Information','Informasi Demam':'Fever Information','Informasi Batuk':'Cough Information','Informasi Diare':'Diarrhea Information',
+  'Kegunaan':'Uses','Peringatan':'Warnings','Kembali':'Back','Hapus':'Delete','Simpan':'Save',
+  'Pilih bahasa / Choose language:\n1. Bahasa Indonesia\n2. English':'Choose language / Pilih bahasa:\n1. Bahasa Indonesia\n2. English',
+  'Pilihan tidak valid.':'Invalid choice.','Bahasa dipilih: Bahasa Indonesia':'Language set to Bahasa Indonesia',
+  'Language selected: English':'Language set to English',
+  'Ada yang bisa kami bantu hari ini?':'How can we help you today?',
+  'Cari obat atau keluhan kesehatan...':'Search medicines or health concerns...',
+  'Layanan Kesehatan':'Health Services',
+  'Cari Obat':'Find Medicine','Informasi obat dan kegunaannya.':'Medicine information and uses.',
+  'Cek Gejala':'Check Symptoms','Pelajari informasi keluhan awal.':'Learn about common symptoms.',
+  'Pantau Kesehatan':'Health Tracker','Catat perkembangan kesehatanmu.':'Track your health progress.',
+  'Panduan tindakan awal.':'First-aid guidance.',
+  '💡 Tips Kesehatan':'💡 Health Tips',
+  'Cuci tangan dengan sabun dan air mengalir untuk membantu mencegah penyebaran penyakit.':'Wash your hands with soap and running water to help prevent the spread of illness.',
+  'Cari nama obat untuk melihat informasi edukasi yang tersedia.':'Search a medicine name to view available educational information.',
+  'Informasi kesehatan untuk membantu, bukan menggantikan tenaga medis.':'Health information to help, not replace healthcare professionals.',
+  'Gejala: ':'Symptoms: ','Perawatan mandiri: ':'Self-care: ','Tanda bahaya: ':'Warning signs: ','Kegunaan: ':'Uses: ','Perhatian: ':'Caution: ',
+  '💊 Informasi Obat atau Perawatan Terkait':'💊 Related Medicine or Care Information',
+  'Kegunaan: ':'Uses: ','Perhatian: ':'Caution: ',
+  'Informasi terkait belum tersedia. Tanyakan kepada tenaga kesehatan atau apoteker.':'Related information is not available yet. Ask a healthcare professional or pharmacist.',
+  'Informasi ini bukan diagnosis atau resep. Jangan memilih obat hanya berdasarkan gejala. Ikuti petunjuk kemasan dan konsultasikan kepada tenaga kesehatan atau apoteker.':'This information is not a diagnosis or prescription. Do not choose medicine based only on symptoms. Follow the package instructions and consult a healthcare professional or pharmacist.',
+  'Belum ada informasi yang cocok. Coba kata lain atau konsultasikan kepada tenaga kesehatan.':'No matching information found. Try another term or consult a healthcare professional.',
+  '❤️ Hapus Favorit':'❤️ Remove Favorite','🤍 Tambah Favorit':'🤍 Add to Favorites',
+  'Cari penyakit atau keluhan...':'Search for a condition or symptom...',
+  'Halo!':'Hello!', 'sakit kepala':'headache','sakit gigi':'toothache','sakit tenggorokan':'sore throat','sakit telinga':'earache','sesak napas':'shortness of breath','demam':'fever','batuk':'cough','batuk kering':'dry cough','batuk berdahak':'productive cough','pilek':'runny nose','hidung tersumbat':'stuffy nose','diare':'diarrhea','maag':'indigestion','mata merah':'red eye','asam lambung':'acid reflux','alergi':'allergy','gatal':'itching','gusi bengkak':'swollen gums','biduran':'hives','sembelit':'constipation','susah tidur':'difficulty sleeping','nyeri haid':'menstrual cramps','nyeri otot':'muscle pain','nyeri perut':'abdominal pain','nyeri punggung':'back pain','memar':'bruise','pusing':'dizziness','mual':'nausea','muntah':'vomiting','lemas':'weakness','luka ringan':'minor wound','dehidrasi':'dehydration','kulit kering':'dry skin','sariawan':'mouth ulcer'
+};
+
+function terapkanBahasa() {
+  const bahasa = mcStorage.getItem('medicareBahasa') || 'id';
+  const reverse = Object.fromEntries(Object.entries(kamusBahasa).map(([id, en]) => [en, id]));
+  const root = document.body;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) continue;
+    const asli = node.nodeValue.trim();
+    const terjemahan = bahasa === 'en' ? kamusBahasa[asli] : reverse[asli];
+    if (terjemahan) node.nodeValue = node.nodeValue.replace(asli, terjemahan);
+  }
+  document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+    const map = bahasa === 'en' ? kamusBahasa : reverse;
+    if (map[el.placeholder]) el.placeholder = map[el.placeholder];
+  });
+  document.documentElement.lang = bahasa === 'en' ? 'en' : 'id';
+}
+
+function bukaMenu(menu) {
+    menuAktif = menu;
+
+    const panelCatatan = document.getElementById('catatanKesehatan');
+    if (panelCatatan) panelCatatan.classList.add('hidden');
+
+    const beranda = document.getElementById('kontenBeranda');
+    const halaman = document.getElementById('halamanMenu');
+const headerBeranda = document.getElementById('headerBeranda');
+
+if (headerBeranda) {
+    headerBeranda.classList.toggle('hidden', menu !== 'beranda');
+}
+    if (!beranda || !halaman) {
+        alert('Bagian halaman belum ditemukan. Periksa ID kontenBeranda dan halamanMenu.');
+        return;
+    }
+
+    beranda.classList.toggle('hidden', menu !== 'beranda');
+    halaman.classList.toggle('hidden', menu === 'beranda');
+    halaman.replaceChildren();
+
+    if (menu === 'beranda') {
+        terapkanBahasa();
+        window.scrollTo(0, 0);
+        return;
+    }
+
+    const judul = document.createElement('h2');
+    halaman.appendChild(judul);
+
+    const isEnglish = (mcStorage.getItem('medicareBahasa') || 'id') === 'en';
+
+    if (menu === 'riwayat') {
+        judul.textContent = isEnglish ? '📋 Search History' : '📋 Riwayat Pencarian';
+        judul.style.cssText = 'color:#176b5b;margin:8px 0 6px;font-size:26px;';
+
+        const intro = document.createElement('p');
+        intro.textContent = isEnglish
+            ? 'Your recent searches are saved here for quick access.'
+            : 'Pencarian terakhir lu tersimpan di sini supaya gampang dibuka lagi.';
+        intro.style.cssText = 'color:#64748b;margin:0 0 18px;line-height:1.6;';
+        halaman.appendChild(intro);
+
+        let riwayat = [];
+        try {
+            riwayat = JSON.parse(mcStorage.getItem('riwayatPencarian') || '[]');
+            if (!Array.isArray(riwayat)) riwayat = [];
+        } catch (e) { riwayat = []; }
+
+        if (riwayat.length === 0) {
+            const kosong = document.createElement('div');
+            kosong.style.cssText = 'padding:28px 18px;text-align:center;background:linear-gradient(135deg,#effcf8,#f8fffd);border:1px solid #d4f0e7;border-radius:18px;color:#52756d;';
+            kosong.innerHTML = `<div style="font-size:36px;margin-bottom:8px">🔎</div><strong>${isEnglish ? 'No search history yet' : 'Belum ada riwayat pencarian'}</strong><p style="margin:8px 0 0;line-height:1.5">${isEnglish ? 'Search for a symptom or condition and it will appear here.' : 'Cari keluhan atau penyakit dulu, nanti hasil pencariannya muncul di sini.'}</p>`;
+            halaman.appendChild(kosong);
+        } else {
+            const aksi = document.createElement('div');
+            aksi.style.cssText = 'display:flex;justify-content:flex-end;margin:0 0 12px;';
+            const hapusSemua = document.createElement('button');
+            hapusSemua.textContent = isEnglish ? '🗑 Clear history' : '🗑 Hapus semua';
+            hapusSemua.style.cssText = 'border:1px solid #fecaca;background:#fff7f7;color:#b42318;padding:9px 13px;border-radius:10px;font-weight:600;cursor:pointer;';
+            hapusSemua.addEventListener('click', function() {
+                if (!confirm(isEnglish ? 'Clear all search history?' : 'Hapus semua riwayat pencarian?')) return;
+                mcStorage.setItem('riwayatPencarian', '[]');
+                bukaMenu('riwayat');
+            });
+            aksi.appendChild(hapusSemua);
+            halaman.appendChild(aksi);
+
+            riwayat.slice().reverse().forEach((item, reverseIndex) => {
+                const originalIndex = riwayat.length - 1 - reverseIndex;
+                const kartu = document.createElement('div');
+                kartu.style.cssText = 'display:flex;align-items:center;gap:12px;padding:14px;margin:10px 0;background:#fff;border:1px solid #e0f0eb;border-radius:15px;box-shadow:0 4px 12px rgba(20,90,75,.06);';
+                const ikon = document.createElement('div');
+                ikon.textContent = '🔎';
+                ikon.style.cssText = 'width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;background:#e9f8f3;border-radius:12px;font-size:20px;';
+                const isi = document.createElement('div');
+                isi.style.cssText = 'flex:1;min-width:0;';
+                const nama = document.createElement('div');
+                nama.textContent = String(item);
+                nama.style.cssText = 'font-weight:650;color:#234e48;overflow-wrap:anywhere;';
+                const keterangan = document.createElement('small');
+                keterangan.textContent = isEnglish ? 'Previous search' : 'Pencarian sebelumnya';
+                keterangan.style.cssText = 'display:block;color:#94a3b8;margin-top:4px;';
+                isi.append(nama, keterangan);
+                const hapus = document.createElement('button');
+                hapus.textContent = '×';
+                hapus.title = isEnglish ? 'Remove from history' : 'Hapus dari riwayat';
+                hapus.setAttribute('aria-label', hapus.title);
+                hapus.style.cssText = 'border:0;background:#fff1f0;color:#b42318;width:34px;height:34px;border-radius:10px;font-size:22px;cursor:pointer;flex-shrink:0;';
+                hapus.addEventListener('click', function() {
+                    riwayat.splice(originalIndex, 1);
+                    mcStorage.setItem('riwayatPencarian', JSON.stringify(riwayat));
+                    bukaMenu('riwayat');
+                });
+                kartu.append(ikon, isi, hapus);
+                halaman.appendChild(kartu);
+            });
+        }
+    }
+
+    if (menu === 'favorit') {
+        judul.textContent = isEnglish ? '❤️ Favorite Medicines' : '❤️ Obat Favorit';
+        judul.style.cssText = 'color:#176b5b;margin:8px 0 6px;font-size:26px;';
+        const intro = document.createElement('p');
+        intro.textContent = isEnglish
+            ? 'Keep medicines you want to find again in one place.'
+            : 'Simpan obat yang ingin lu temukan lagi di satu tempat.';
+        intro.style.cssText = 'color:#64748b;margin:0 0 18px;line-height:1.6;';
+        halaman.appendChild(intro);
+
+        let favorit = [];
+        try {
+            favorit = JSON.parse(mcStorage.getItem('medicareFavorit') || '[]');
+            if (!Array.isArray(favorit)) favorit = [];
+        } catch (e) { favorit = []; }
+
+        if (favorit.length === 0) {
+            const kosong = document.createElement('div');
+            kosong.style.cssText = 'padding:28px 18px;text-align:center;background:linear-gradient(135deg,#effcf8,#f8fffd);border:1px solid #d4f0e7;border-radius:18px;color:#52756d;';
+            kosong.innerHTML = `<div style="font-size:36px;margin-bottom:8px">💚</div><strong>${isEnglish ? 'No favorite medicines yet' : 'Belum ada obat favorit'}</strong><p style="margin:8px 0 0;line-height:1.5">${isEnglish ? 'Search for a medicine and add it to your favorites.' : 'Cari obat, lalu tambahkan ke daftar favorit lu.'}</p>`;
+            halaman.appendChild(kosong);
+        } else {
+            favorit.forEach((item) => {
+                const kartu = document.createElement('div');
+                kartu.style.cssText = 'display:flex;align-items:center;gap:12px;padding:15px;margin:10px 0;background:#fff;border:1px solid #e0f0eb;border-radius:15px;box-shadow:0 4px 12px rgba(20,90,75,.06);';
+                const ikon = document.createElement('div');
+                ikon.textContent = '💊';
+                ikon.style.cssText = 'width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;background:#e9f8f3;border-radius:12px;font-size:22px;';
+                const isi = document.createElement('div');
+                isi.style.cssText = 'flex:1;min-width:0;';
+                const nama = document.createElement('div');
+                nama.textContent = String(item);
+                nama.style.cssText = 'font-weight:700;color:#234e48;overflow-wrap:anywhere;';
+                const label = document.createElement('small');
+                label.textContent = isEnglish ? 'Saved to favorites' : 'Tersimpan di favorit';
+                label.style.cssText = 'display:block;color:#94a3b8;margin-top:4px;';
+                isi.append(nama, label);
+                const hapus = document.createElement('button');
+                hapus.textContent = isEnglish ? 'Remove' : 'Hapus';
+                hapus.style.cssText = 'border:1px solid #fecaca;background:#fff7f7;color:#b42318;padding:9px 11px;border-radius:10px;font-weight:600;cursor:pointer;flex-shrink:0;';
+                hapus.addEventListener('click', function() {
+                    favorit = favorit.filter(namaObat => namaObat !== item);
+                    mcStorage.setItem('medicareFavorit', JSON.stringify(favorit));
+                    bukaMenu('favorit');
+                });
+                kartu.append(ikon, isi, hapus);
+                halaman.appendChild(kartu);
+            });
+        }
+    }
+
+    if (menu === 'pengingat') {
+  judul.textContent = '🔔 Pengingat Obat';
+
+  halaman.innerHTML = `
+    <div class="card">
+        <button class="btn" onclick="mintaIzinNotifikasi()">
+  🔔 Aktifkan Notifikasi
+</button>
+      <h3>💊 Tambah Jadwal Obat</h3>
+
+      <label>Nama Obat</label>
+      <input id="namaObat" placeholder="Nama obat">
+
+      <label>Dosis sesuai resep</label>
+      <input id="dosisObat" placeholder="Dosis obat">
+
+      <label>Tanggal Minum</label>
+      <input type="date" id="tanggalObat">
+
+      <label>Jam Minum</label>
+      <input type="time" id="jamObat">
+
+      <button class="btn" onclick="simpanPengingat()">
+        Simpan Jadwal
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>📋 Jadwal Obat Saya</h3>
+      <div id="daftarPengingat">
+        Belum ada jadwal obat.
+      </div>
+    </div>
+  `;
+  tampilkanPengingat();
+}
+
+    
+    if (menu === 'profil') {
+        halaman.innerHTML = `
+            <div class="profil-header">
+                <div class="profil-avatar">👤</div>
+                <h2 id="namaProfil">Pengguna MediCare+</h2>
+                <p>💚 Member MediCare+</p>
+            </div>
+
+            <div class="profil-card">
+                <h3>⚙️ Informasi Akun</h3>
+                <div class="profil-info">
+                    <span>📧 Email</span>
+                    <p id="emailProfil">-</p>
+                </div>
+                <div class="profil-info">
+                    <span>🩺 Aplikasi</span>
+                    <p>MediCare+ Health Assistant</p>
+                </div>
+            </div>
+
+            <h3 class="profil-subtitle">Pengaturan</h3>
+
+            <button class="profil-menu" onclick="editProfil()">
+                <span>📝</span>
+                <span>Edit Profil<small>Ubah nama pengguna</small></span>
+                <span>›</span>
+            </button>
+
+            <button class="profil-menu" onclick="pilihBahasa()">
+                <span>🌐</span>
+                <span>Bahasa<small id="labelBahasa">Bahasa Indonesia</small></span>
+                <span>›</span>
+            </button>
+
+            <button class="profil-menu" onclick="bukaMenu('riwayat')">
+                <span>🕘</span>
+                <span>Riwayat Aktivitas<small>Lihat pencarian sebelumnya</small></span>
+                <span>›</span>
+            </button>
+
+            <div class="profil-card">
+                <h3>🔐 Keamanan Akun</h3>
+                <p>Jaga kerahasiaan informasi akunmu.</p>
+                <button class="profil-tombol" onclick="alert('Fitur ubah kata sandi akan ditambahkan nanti.')">
+                    Ubah Kata Sandi
+                </button>
+            </div>
+
+            <button class="profil-keluar" onclick="logout()">
+                Keluar dari Akun
+            </button>
+
+            <p class="profil-footer">MediCare+ • Teman Sehatmu 💚</p>
+        `;
+
+        const email = mcStorage.getItem('medicareDemoCurrent');
+        let users = {};
+
+        try {
+            users = JSON.parse(
+                mcStorage.getItem('medicareDemoUsers') || '{}'
+            );
+        } catch (e) {}
+
+        const user = users[email] || {};
+
+        document.getElementById('namaProfil').textContent =
+            user.name || 'Pengguna MediCare+';
+
+        document.getElementById('emailProfil').textContent =
+            email || '-';
+        const labelBahasa = document.getElementById('labelBahasa');
+        if (labelBahasa) labelBahasa.textContent =
+            (mcStorage.getItem('medicareBahasa') || 'id') === 'en' ? 'English' : 'Bahasa Indonesia';
+    }
+
+    terapkanBahasa();
+    window.scrollTo(0, 0);
+}
+
+
+function showPage(page) {
+    document.querySelectorAll('body > section').forEach(function(section) {
+        section.classList.add('hidden');
+    });
+
+    const halaman = document.getElementById(page);
+
+    if (halaman) {
+        halaman.classList.remove('hidden');
+    }
+
+    terapkanBahasa();
+    window.scrollTo(0, 0);
+}
+
+
+document.getElementById('registerForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('regName').value.trim();
+    const email=document.getElementById('regEmail').value.trim().toLowerCase();
+    const password=document.getElementById('regPassword').value;
+
+    let users={};
+    try{users=JSON.parse(mcStorage.getItem('medicareDemoUsers')||'{}')}catch(err){}
+
+    if(users[email]){
+        alert('Email sudah terdaftar. Silakan login.');
+        return;
+    }
+
+    users[email]={name:name,password:password};
+    mcStorage.setItem('medicareDemoUsers',JSON.stringify(users));
+    mcStorage.setItem('medicareDemoCurrent',email);
+    openDashboard(name);
+});
+
+document.getElementById('loginForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+    const password=document.getElementById('loginPassword').value;
+
+    let users={};
+    try{users=JSON.parse(mcStorage.getItem('medicareDemoUsers')||'{}')}catch(err){}
+
+    if(!users[email]||users[email].password!==password){
+        alert('Email atau password tidak sesuai.');
+        return;
+    }
+    mcStorage.setItem('medicareDemoCurrent',email);
+    openDashboard(users[email].name);
+});
+
+function openDashboard(name){
+    document.getElementById('greeting').textContent='Halo, '+name+'! 👋';
+    showPage('dashboard');
+    terapkanBahasa();
+}
+
+
+function pilihBahasa() {
+    const sekarang = mcStorage.getItem('medicareBahasa') || 'id';
+    const pilihan = prompt(
+        'Pilih bahasa / Choose language:\n1. Bahasa Indonesia\n2. English',
+        sekarang === 'id' ? '1' : '2'
+    );
+    if (pilihan === null) return;
+    if (pilihan === '1') {
+        mcStorage.setItem('medicareBahasa', 'id');
+    } else if (pilihan === '2') {
+        mcStorage.setItem('medicareBahasa', 'en');
+    } else {
+        alert('Pilihan tidak valid.');
+        return;
+    }
+    bukaMenu(menuAktif || 'profil');
+}
+
+
+function editProfil() {
+    const email = mcStorage.getItem('medicareDemoCurrent');
+    if (!email) return alert('Silakan login terlebih dahulu.');
+
+    let users = JSON.parse(
+        mcStorage.getItem('medicareDemoUsers') || '{}'
+    );
+    const user = users[email];
+    if (!user) return alert('Data pengguna tidak ditemukan.');
+
+    const nama = prompt('Nama lengkap:', user.name || '');
+    if (nama === null) return;
+    if (!nama.trim()) return alert('Nama tidak boleh kosong.');
+
+    const tanggalLahir = prompt(
+        'Tanggal lahir (contoh: 2005-08-17):',
+        user.tanggalLahir || ''
+    );
+    if (tanggalLahir === null) return;
+
+    const jenisKelamin = prompt(
+        'Jenis kelamin (Perempuan/Laki-laki):',
+        user.jenisKelamin || ''
+    );
+    if (jenisKelamin === null) return;
+
+    const nomorHP = prompt('Nomor HP:', user.nomorHP || '');
+    if (nomorHP === null) return;
+
+    const alamat = prompt('Alamat:', user.alamat || '');
+    if (alamat === null) return;
+
+    const foto = prompt(
+        'URL foto profil (opsional):',
+        user.foto || ''
+    );
+    if (foto === null) return;
+
+    Object.assign(user, {
+        name: nama.trim(),
+        tanggalLahir: tanggalLahir.trim(),
+        jenisKelamin: jenisKelamin.trim(),
+        nomorHP: nomorHP.trim(),
+        alamat: alamat.trim(),
+        foto: foto.trim()
+    });
+
+    users[email] = user;
+    mcStorage.setItem('medicareDemoUsers', JSON.stringify(users));
+
+    const greeting = document.getElementById('greeting');
+    if (greeting) greeting.textContent = 'Halo, ' + user.name + '! 👋';
+
+    bukaMenu('profil');
+    alert('Profil berhasil diperbarui! 💚');
+}
+
+
+function logout(){
+    mcStorage.removeItem('medicareDemoCurrent');
+    document.getElementById('featurePanel').classList.add('hidden');
+    showPage('welcome');
+}
+
+
+function showGejala() {
+    const panel = document.getElementById('featurePanel');
+    panel.classList.remove('hidden');
+    panel.replaceChildren();
+
+    const judul = document.createElement('h3');
+    judul.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? '🩺 Initial Symptom Check' : '🩺 Pemeriksaan Keluhan Awal';
+
+    const petunjuk = document.createElement('p');
+    petunjuk.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? 'Choose a symptom to learn about:' : 'Pilih keluhan yang ingin kamu pelajari:';
+
+    const pilihan = document.createElement('select');
+    pilihan.id = 'pilihanGejala';
+    pilihan.style.width = '100%';
+    pilihan.style.padding = '12px';
+    pilihan.style.borderRadius = '10px';
+
+    [
+    ['', (mcStorage.getItem('medicareBahasa') === 'en') ? 'Select a symptom' : 'Pilih keluhan'],
+    ...Object.keys(detailKeluhan).map(keluhan => [
+        keluhan,
+        keluhan.charAt(0).toUpperCase() + keluhan.slice(1)
+    ])
+].forEach(item => {
+    const option = document.createElement('option');
+    option.value = item[0];
+    option.textContent = item[1];
+    pilihan.appendChild(option);
+});
+
+    const tombol = document.createElement('button');
+    tombol.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? 'View Guidance' : 'Lihat Arahan';
+    tombol.className = 'btn';
+
+    const hasil = document.createElement('div');
+    hasil.style.marginTop = '16px';
+
+    tombol.onclick = function() {
+        const gejala = pilihan.value;
+        hasil.replaceChildren();
+
+        if (!gejala) {
+            hasil.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? 'Please select a symptom first.' : 'Silakan pilih keluhan terlebih dahulu.';
+            return;
+        }
+
+        const h = document.createElement('h4');
+        const p = document.createElement('p');
+
+        const detail = detailKeluhan[gejala];
+
+if (detail) {
+    hasil.style.cssText = `
+        margin-top: 16px;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #dcece7;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        line-height: 1.6;
+        color: #334155;
+    `;
+
+    h.textContent = detail.judul;
+    h.style.cssText = `
+        margin: 0 0 16px;
+        color: #087f6b;
+        font-size: 20px;
+    `;
+
+    p.replaceChildren();
+
+    const bagian = [
+    {
+        judul: "🩺 Gejala",
+        isi: detail.gejala,
+        warna: "#f0f9ff",
+        teks: "#0369a1"
+    },
+    {
+        judul: "🌿 Perawatan Mandiri",
+        isi: detail.perawatan,
+        warna: "#f0fdf4",
+        teks: "#15803d"
+    },
+    {
+        judul: "⚠️ Tanda Bahaya",
+        isi: detail.bahaya,
+        warna: "#fff1f2",
+        teks: "#be123c"
+    }
+];
+
+    bagian.forEach(({ judul, isi, warna, teks: warnaTeks }) => {
+        const kartu = document.createElement("div");
+        kartu.style.cssText = `
+            padding: 12px;
+            margin-bottom: 12px;
+            background: ${warna};
+            border-radius: 10px;
+        `;
+
+        const subjudul = document.createElement("h4");
+        subjudul.textContent = judul;
+        subjudul.style.cssText = `
+            margin: 0 0 6px;
+            color: ${warnaTeks};
+            font-size: 15px;
+        `;
+
+        const teks = document.createElement("p");
+        teks.textContent = isi;
+        teks.style.cssText = `
+            margin: 0;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        `;
+
+        kartu.append(subjudul, teks);
+        p.appendChild(kartu);
+    });
+} else {
+    h.textContent = gejala;
+    p.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? 'Information for this symptom is not available yet.' : 'Informasi untuk keluhan ini belum tersedia.';
+}
+        hasil.append(h, p);
+
+        const catatan = document.createElement('p');
+        catatan.textContent = 'Informasi ini bukan diagnosis. Jika khawatir atau keluhan memburuk, konsultasikan kepada tenaga kesehatan.';
+        hasil.appendChild(catatan);
+    };
+
+    panel.append(judul, petunjuk, pilihan, tombol, hasil);
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function showFeature(title,description){
+    const panel=document.getElementById('featurePanel');
+    panel.innerHTML='<b>'+title+'</b><p>'+description+'</p>';
+    panel.classList.remove('hidden');
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function tampilkanFavorit() {
+    const panel = document.getElementById('featurePanel');
+    panel.replaceChildren();
+    panel.classList.remove('hidden');
+
+    const judul = document.createElement('h3');
+    judul.textContent = '❤️ Obat Favorit';
+    panel.appendChild(judul);
+
+    let favorit = [];
+
+    try {
+        favorit = JSON.parse(
+            mcStorage.getItem('medicareFavorit') || '[]'
+        );
+        if (!Array.isArray(favorit)) favorit = [];
+    } catch (error) {
+        favorit = [];
+    }
+
+    if (favorit.length === 0) {
+        const pesan = document.createElement('p');
+        pesan.textContent =
+    (mcStorage.getItem('medicareBahasa') || 'id') === 'en'
+        ? 'No favorite medicines yet. Search for a medicine and tap Add to Favorites.'
+        : 'Belum ada obat favorit. Cari obat dan tekan Tambah Favorit.';
+        panel.appendChild(pesan);
+        return;
+    }
+
+    favorit.forEach(function(namaObat) {
+        const kartu = document.createElement('div');
+
+kartu.style.cssText = `
+    background: white;
+    padding: 16px;
+    border-radius: 14px;
+    margin: 12px 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+`;
+
+        const nama = document.createElement('h4');
+nama.textContent = '💊 ' + namaObat;
+nama.style.cssText = 'margin:0;flex:1;min-width:120px;';
+kartu.appendChild(nama);
+
+        const hapus = document.createElement('button');
+        hapus.className = 'btn';
+        hapus.textContent = '💔 Hapus Favorit';
+
+        hapus.addEventListener('click', function() {
+            favorit = favorit.filter(function(nama) {
+                return nama !== namaObat;
+            });
+
+            mcStorage.setItem(
+                'medicareFavorit',
+                JSON.stringify(favorit)
+            );
+
+            tampilkanFavorit();
+        });
+
+        kartu.appendChild(hapus);
+        panel.appendChild(kartu);
+    });
+
+    panel.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+    });
+}
+
+
+const kamusKontenMedis = {
+  "Suhu tubuh meningkat dan dapat disertai menggigil atau lemas.": "Body temperature rises and may be accompanied by chills or weakness.",
+  "Istirahat, cukup minum, dan ukur suhu tubuh.": "Rest, drink enough fluids, and monitor your body temperature.",
+  "Cari pertolongan medis jika demam disertai sesak napas, kebingungan, kejang, atau kondisi memburuk.": "Seek medical care if fever is accompanied by difficulty breathing, confusion, seizures, or worsening symptoms.",
+  "Membantu meredakan nyeri dan demam.": "Helps relieve pain and fever.",
+  "Hindari penggunaan beberapa obat yang sama-sama mengandung paracetamol. Dosis berlebihan dapat merusak hati.": "Avoid taking multiple medicines that contain paracetamol. An overdose can damage the liver.",
+  "Informasi ini bukan diagnosis atau resep. Jangan memilih obat hanya berdasarkan gejala. Ikuti petunjuk kemasan dan konsultasikan kepada tenaga kesehatan atau apoteker.": "This information is not a diagnosis or prescription. Do not choose medicine based only on symptoms. Follow the package instructions and consult a healthcare professional or pharmacist.",
+  "Nyeri atau rasa tidak nyaman di kepala.": "Pain or discomfort in the head.",
+  "Istirahat, minum cukup air, dan perhatikan pemicu seperti kurang tidur.": "Rest, drink enough water, and watch for triggers such as lack of sleep.",
+  "Segera cari pertolongan jika sakit kepala muncul mendadak dan sangat berat, atau disertai kelemahan satu sisi tubuh maupun gangguan kesadaran.": "Seek urgent care if a headache is sudden and severe, or occurs with one-sided weakness or altered consciousness.",
+  "Batuk dapat berupa batuk kering atau berdahak.": "A cough may be dry or produce mucus.",
+  "Minum cukup cairan dan hindari asap rokok.": "Drink enough fluids and avoid cigarette smoke.",
+  "Segera cari pertolongan jika batuk disertai sesak napas berat atau batuk darah.": "Seek urgent care if a cough is accompanied by severe shortness of breath or coughing up blood.",
+  "Buang air besar lebih sering dengan tinja cair.": "Passing loose or watery stools more frequently than usual.",
+  "Minum oralit sesuai petunjuk kemasan untuk membantu mengganti cairan yang hilang.": "Drink oral rehydration solution according to the package instructions to replace lost fluids.",
+  "Segera cari pertolongan jika mengalami dehidrasi berat, tinja berdarah, atau nyeri perut berat.": "Seek urgent care for severe dehydration, bloody stools, or severe abdominal pain.",
+  "Nyeri pada gigi atau area sekitar gigi.": "Pain in a tooth or the surrounding area.",
+  "Bersihkan gigi dengan lembut dan hindari makanan yang memicu nyeri. Periksakan ke dokter gigi.": "Clean your teeth gently, avoid foods that trigger pain, and see a dentist.",
+  "Segera cari pertolongan jika terjadi pembengkakan wajah atau leher, demam, atau kesulitan menelan maupun bernapas.": "Seek urgent care for swelling of the face or neck, fever, or difficulty swallowing or breathing.",
+  "Tenggorokan terasa nyeri atau sakit saat menelan.": "The throat feels sore or painful when swallowing.",
+  "Istirahat, minum cukup cairan, dan hindari asap rokok.": "Rest, drink enough fluids, and avoid cigarette smoke.",
+  "Segera cari pertolongan jika sulit bernapas atau tidak mampu menelan cairan.": "Seek urgent care if you have difficulty breathing or cannot swallow liquids.",
+  "Hidung berair atau tersumbat dan bersin.": "A runny or blocked nose and sneezing.",
+  "Cuci tangan, tekan luka dengan kain kasa bersih jika berdarah, bilas luka menggunakan air bersih mengalir, lalu tutup dengan balutan steril.": "Wash your hands. If bleeding, apply pressure with clean gauze, rinse the wound under clean running water, then cover it with a sterile dressing.",
+  "Luka kecil atau goresan pada kulit, terkadang disertai sedikit perdarahan dan rasa perih.": "A small cut or scrape on the skin, sometimes with slight bleeding and stinging.",
+  "Gusi tampak membesar atau kemerahan, terasa nyeri, dan dapat berdarah saat menyikat gigi.": "The gums may look swollen or red, feel sore, and bleed during brushing.",
+  "Membantu meredakan nyeri dan demam.": "Helps relieve pain and fever."
+};
+const kamusSemuaKontenEN = {
+  "Informasi Sakit Kepala": "Headache Information",
+  "Informasi Demam": "Fever Information",
+  "Informasi Batuk": "Cough Information",
+  "Informasi Diare": "Diarrhea Information",
+  "Informasi Sakit Gigi": "Toothache Information",
+  "Informasi Sakit Tenggorokan": "Sore Throat Information",
+  "Informasi Pilek": "Common Cold Information",
+  "Informasi Mual": "Nausea Information",
+  "Informasi Muntah": "Vomiting Information",
+  "Informasi Sembelit": "Constipation Information",
+  "Informasi Nyeri Perut": "Abdominal Pain Information",
+  "Informasi Pusing": "Dizziness Information",
+  "Informasi Alergi": "Allergy Information",
+  "Informasi Gatal": "Itching Information",
+  "Informasi Nyeri Otot": "Muscle Pain Information",
+  "Informasi Sakit Telinga": "Earache Information",
+  "Informasi Sesak Napas": "Shortness of Breath Information",
+  "Informasi Nyeri Haid": "Menstrual Cramp Information",
+  "Informasi Dehidrasi": "Dehydration Information",
+  "Informasi Lemas": "Fatigue Information",
+  "Informasi Kulit Kering": "Dry Skin Information",
+  "Informasi Sariawan": "Mouth Ulcer Information",
+  "Informasi Memar": "Bruise Information",
+  "Informasi Biduran": "Hives Information",
+  "Informasi Asam Lambung": "Acid Reflux Information",
+  "Informasi Maag": "Indigestion Information",
+  "Informasi Hidung Tersumbat": "Nasal Congestion Information",
+  "Informasi Batuk Berdahak": "Productive Cough Information",
+  "Informasi Batuk Kering": "Dry Cough Information",
+  "Informasi Mata Merah": "Red Eye Information",
+  "Informasi Nyeri Punggung": "Back Pain Information",
+  "Informasi Susah Tidur": "Difficulty Sleeping Information",
+  "Informasi Luka Ringan": "Minor Wound Information",
+  "Informasi Gusi Bengkak": "Swollen Gums Information",
+  "Nyeri atau rasa tidak nyaman di kepala.": "Pain or discomfort in the head.",
+  "Istirahat, minum cukup air, dan perhatikan pemicu seperti kurang tidur.": "Rest, drink enough water, and watch for triggers such as lack of sleep.",
+  "Segera cari pertolongan jika sakit kepala muncul mendadak dan sangat berat, atau disertai kelemahan satu sisi tubuh maupun gangguan kesadaran.": "Seek urgent care if a headache is sudden and severe, or occurs with one-sided weakness or altered consciousness.",
+  "Suhu tubuh meningkat dan dapat disertai menggigil atau lemas.": "Body temperature rises and may be accompanied by chills or weakness.",
+  "Istirahat, cukup minum, dan ukur suhu tubuh.": "Rest, drink enough fluids, and monitor your body temperature.",
+  "Cari pertolongan medis jika demam disertai sesak napas, kebingungan, kejang, atau kondisi memburuk.": "Seek medical care if fever is accompanied by difficulty breathing, confusion, seizures, or worsening symptoms.",
+  "Batuk dapat berupa batuk kering atau berdahak.": "A cough may be dry or produce mucus.",
+  "Minum cukup cairan dan hindari asap rokok.": "Drink enough fluids and avoid cigarette smoke.",
+  "Segera cari pertolongan jika batuk disertai sesak napas berat atau batuk darah.": "Seek urgent care if a cough is accompanied by severe shortness of breath or coughing up blood.",
+  "Buang air besar lebih sering dengan tinja cair.": "Passing loose or watery stools more frequently than usual.",
+  "Minum oralit sesuai petunjuk kemasan untuk membantu mengganti cairan yang hilang.": "Drink oral rehydration solution according to the package instructions to replace lost fluids.",
+  "Segera cari pertolongan jika mengalami dehidrasi berat, tinja berdarah, atau nyeri perut berat.": "Seek urgent care for severe dehydration, bloody stools, or severe abdominal pain.",
+  "Nyeri pada gigi atau area sekitar gigi.": "Pain in a tooth or the surrounding area.",
+  "Bersihkan gigi dengan lembut dan hindari makanan yang memicu nyeri. Periksakan ke dokter gigi.": "Clean your teeth gently, avoid foods that trigger pain, and see a dentist.",
+  "Segera cari pertolongan jika terjadi pembengkakan wajah atau leher, demam, atau kesulitan menelan maupun bernapas.": "Seek urgent care for swelling of the face or neck, fever, or difficulty swallowing or breathing.",
+  "Tenggorokan terasa nyeri atau sakit saat menelan.": "The throat feels sore or painful when swallowing.",
+  "Istirahat, minum cukup cairan, dan hindari asap rokok.": "Rest, drink enough fluids, and avoid cigarette smoke.",
+  "Segera cari pertolongan jika sulit bernapas atau tidak mampu menelan cairan.": "Seek urgent care if you have difficulty breathing or cannot swallow liquids.",
+  "Hidung berair atau tersumbat dan bersin.": "A runny or blocked nose and sneezing.",
+  "Istirahat, cukup minum, dan gunakan larutan saline sesuai petunjuk bila diperlukan.": "Rest, drink enough fluids, and use saline solution as directed if needed.",
+  "Periksakan diri jika sesak napas, gejala memburuk, atau berlangsung lama.": "Seek medical advice for shortness of breath, worsening symptoms, or symptoms that persist.",
+  "Perasaan ingin muntah, terkadang disertai tidak nyaman di perut.": "A feeling of wanting to vomit, sometimes with stomach discomfort.",
+  "Minum sedikit-sedikit tetapi sering dan makan dalam porsi kecil jika mampu.": "Sip fluids frequently in small amounts and eat small portions if you can.",
+  "Cari pertolongan medis jika disertai nyeri perut hebat, muntah darah, atau tanda dehidrasi.": "Seek medical care for severe abdominal pain, vomiting blood, or signs of dehydration.",
+  "Isi lambung keluar melalui mulut.": "Stomach contents come out through the mouth.",
+  "Minum cairan sedikit-sedikit tetapi sering. Oralit dapat membantu mengganti cairan yang hilang.": "Sip fluids frequently in small amounts. Oral rehydration solution can help replace lost fluids.",
+  "Segera cari pertolongan jika muntah darah, nyeri perut hebat, kebingungan, atau tidak mampu mempertahankan cairan.": "Seek urgent care for vomiting blood, severe abdominal pain, confusion, or inability to keep fluids down.",
+  "Buang air besar jarang atau tinja keras dan sulit dikeluarkan.": "Infrequent bowel movements or hard stools that are difficult to pass.",
+  "Tingkatkan serat secara bertahap, cukup minum, dan lakukan aktivitas fisik sesuai kemampuan.": "Gradually increase fiber, drink enough fluids, and be physically active as able.",
+  "Cari pertolongan jika disertai nyeri perut hebat, muntah, atau perut membengkak.": "Seek medical care if accompanied by severe abdominal pain, vomiting, or abdominal swelling.",
+  "Rasa sakit atau tidak nyaman di area perut dengan berbagai kemungkinan penyebab.": "Pain or discomfort in the abdomen, which can have many possible causes.",
+  "Istirahat dan perhatikan lokasi, durasi, serta gejala penyerta. Hindari menebak penyebab sendiri.": "Rest and note the location, duration, and associated symptoms. Avoid guessing the cause yourself.",
+  "Segera cari pertolongan jika nyeri sangat berat atau mendadak, perut kaku, muntah darah, atau pingsan.": "Seek urgent care for sudden or severe pain, a rigid abdomen, vomiting blood, or fainting.",
+  "Kepala terasa ringan, berputar, atau tidak seimbang.": "The head may feel light, spinning, or unsteady.",
+  "Duduk atau berbaring agar tidak jatuh, lalu bangun perlahan.": "Sit or lie down to avoid falling, then get up slowly.",
+  "Segera cari pertolongan jika pusing mendadak disertai kelemahan satu sisi tubuh, gangguan bicara, atau pingsan.": "Seek urgent care for sudden dizziness with one-sided weakness, speech problems, or fainting.",
+  "Gatal, ruam, bersin, atau hidung berair.": "Itching, rash, sneezing, or a runny nose.",
+  "Hindari pemicu alergi dan pantau gejala.": "Avoid known allergy triggers and monitor symptoms.",
+  "Jika sesak napas atau bibir dan lidah membengkak, segera cari pertolongan darurat.": "Seek emergency care for difficulty breathing or swelling of the lips or tongue.",
+  "Kulit terasa gatal, terkadang disertai ruam.": "The skin feels itchy, sometimes with a rash.",
+  "Hindari menggaruk dan hindari bahan yang memicu iritasi.": "Avoid scratching and avoid substances that trigger irritation.",
+  "Cari pertolongan jika disertai sesak napas atau pembengkakan.": "Seek medical care if accompanied by shortness of breath or swelling.",
+  "Otot terasa pegal, kaku, atau nyeri.": "Muscles feel sore, stiff, or painful.",
+  "Istirahat dan lakukan peregangan ringan jika memungkinkan.": "Rest and do gentle stretching if possible.",
+  "Cari pertolongan jika nyeri berat, kelemahan mendadak, atau urine berwarna gelap.": "Seek medical care for severe pain, sudden weakness, or dark urine.",
+  "Telinga terasa nyeri, penuh, atau tidak nyaman.": "The ear feels painful, full, or uncomfortable.",
+  "Jangan memasukkan benda atau cairan sembarangan ke telinga.": "Do not put objects or unprescribed liquids into the ear.",
+  "Cari pertolongan jika keluar darah, demam tinggi, atau pendengaran menurun.": "Seek medical care for bleeding, high fever, or reduced hearing.",
+  "Napas terasa berat atau sulit bernapas.": "Breathing feels difficult or labored.",
+  "Hentikan aktivitas dan duduk dalam posisi tegak.": "Stop activity and sit upright.",
+  "Sesak berat, bibir membiru, atau sulit berbicara merupakan kondisi darurat.": "Severe breathlessness, blue lips, or difficulty speaking are medical emergencies.",
+  "Kram perut bagian bawah, nyeri pinggang, dan terkadang mual.": "Lower abdominal cramps, lower back pain, and sometimes nausea.",
+  "Istirahat, kompres hangat pada perut bagian bawah, dan cukup minum.": "Rest, apply a warm compress to the lower abdomen, and drink enough fluids.",
+  "Periksa ke tenaga kesehatan jika nyeri sangat berat, perdarahan berlebihan, atau disertai demam.": "Seek medical advice for severe pain, heavy bleeding, or fever.",
+  "Haus, mulut kering, urine berwarna pekat, dan buang air kecil lebih sedikit.": "Thirst, dry mouth, dark urine, and urinating less often.",
+  "Minum sedikit demi sedikit tetapi sering. Gunakan oralit jika kehilangan cairan akibat diare atau muntah.": "Sip fluids frequently in small amounts. Use oral rehydration solution if fluids are lost through diarrhea or vomiting.",
+  "Segera cari pertolongan jika bingung, sangat lemas, pingsan, atau sulit minum.": "Seek urgent care for confusion, severe weakness, fainting, or difficulty drinking.",
+  "Tubuh terasa kurang bertenaga, cepat lelah, atau sulit beraktivitas.": "You may feel low on energy, tire easily, or have difficulty with daily activities.",
+  "Istirahat, makan bergizi, cukup minum, dan tidur teratur.": "Rest, eat nutritious food, drink enough fluids, and keep a regular sleep schedule.",
+  "Segera cari pertolongan jika lemas mendadak, sesak napas, nyeri dada, pingsan, atau kelemahan satu sisi tubuh.": "Seek urgent care for sudden weakness, shortness of breath, chest pain, fainting, or one-sided weakness.",
+  "Kulit terasa kasar, bersisik, tertarik, atau gatal.": "The skin feels rough, flaky, tight, or itchy.",
+  "Gunakan pelembap tanpa pewangi setelah mandi, hindari air terlalu panas, dan gunakan sabun lembut.": "Apply fragrance-free moisturizer after bathing, avoid very hot water, and use gentle soap.",
+  "Periksa jika kulit pecah-pecah parah, berdarah, bernanah, atau menunjukkan tanda infeksi.": "Seek medical advice for severe cracking, bleeding, pus, or signs of infection.",
+  "Luka kecil di mulut yang terasa perih saat makan atau minum.": "A small sore in the mouth that stings when eating or drinking.",
+  "Berkumur dengan air garam ringan, pilih makanan lunak, dan hindari makanan pedas atau asam.": "Rinse with mild salt water, choose soft foods, and avoid spicy or acidic foods.",
+  "Periksa jika sulit menelan, demam, sariawan sering berulang, atau tidak sembuh dalam dua minggu.": "Seek medical advice for difficulty swallowing, fever, recurrent ulcers, or a sore that does not heal within two weeks.",
+  "Perubahan warna kulit, nyeri, atau bengkak setelah terbentur.": "Skin discoloration, pain, or swelling after a bump or impact.",
+  "Kompres dingin yang dibungkus kain selama 15–20 menit dan istirahatkan bagian yang terkena.": "Apply a cold pack wrapped in cloth for 15–20 minutes and rest the affected area.",
+  "Periksa jika memar membesar, nyeri berat, sering muncul tanpa sebab, atau disertai perdarahan.": "Seek medical advice if bruising spreads, is very painful, appears often without a cause, or occurs with bleeding.",
+  "Bentol menonjol yang gatal, kemerahan, dan dapat berpindah tempat.": "Raised, itchy, red welts that may change location.",
+  "Kompres dingin, hindari pemicu yang diketahui, dan jangan menggaruk kulit.": "Use a cool compress, avoid known triggers, and do not scratch the skin.",
+  "Jika bibir atau lidah membengkak, tenggorokan terasa menyempit, atau sulit bernapas, segera cari pertolongan darurat.": "Seek emergency care if the lips or tongue swell, the throat feels tight, or breathing becomes difficult.",
+  "Rasa terbakar di dada, rasa asam di mulut, atau cairan lambung naik.": "A burning feeling in the chest, a sour taste in the mouth, or stomach contents coming back up.",
+  "Makan dalam porsi kecil, hindari pemicu, dan jangan berbaring selama 2–3 jam setelah makan.": "Eat smaller meals, avoid triggers, and do not lie down for 2–3 hours after eating.",
+  "Cari pertolongan segera jika nyeri dada berat, sesak napas, muntah darah, atau tinja hitam.": "Seek urgent care for severe chest pain, shortness of breath, vomiting blood, or black stools.",
+  "Nyeri atau perih di ulu hati, kembung, mual, dan cepat kenyang.": "Upper abdominal pain or burning, bloating, nausea, and feeling full quickly.",
+  "Makan teratur sesuai toleransi, hindari pemicu keluhan, dan hindari penggunaan obat antinyeri sembarangan.": "Eat regularly as tolerated, avoid triggers, and do not use pain medicines indiscriminately.",
+  "Segera periksa jika muntah darah, tinja hitam, nyeri berat, atau muntah terus-menerus.": "Seek urgent care for vomiting blood, black stools, severe pain, or persistent vomiting.",
+  "Sulit bernapas melalui hidung, hidung terasa penuh, atau pilek.": "Difficulty breathing through the nose, a blocked feeling, or a runny nose.",
+  "Gunakan semprotan saline, minum cukup, dan istirahat.": "Use saline spray, drink enough fluids, and rest.",
+  "Periksa jika disertai sesak napas, demam tinggi, nyeri wajah berat, atau keluhan menetap.": "Seek medical advice for shortness of breath, high fever, severe facial pain, or persistent symptoms.",
+  "Batuk disertai lendir atau dahak dari saluran pernapasan.": "A cough that brings up mucus or phlegm from the airways.",
+  "Segera periksa jika batuk darah, sesak napas, nyeri dada, atau kondisi memburuk.": "Seek urgent care for coughing up blood, shortness of breath, chest pain, or worsening symptoms.",
+  "Batuk tanpa dahak yang dapat menyebabkan tenggorokan terasa gatal atau iritasi.": "A cough without phlegm that may cause an itchy or irritated throat.",
+  "Minum air hangat, hindari asap dan debu, serta gunakan madu untuk orang berusia di atas satu tahun jika sesuai.": "Drink warm fluids, avoid smoke and dust, and consider honey for people over one year old if appropriate.",
+  "Periksa jika batuk disertai sesak napas, batuk darah, demam tinggi, atau berlangsung lama.": "Seek medical advice for cough with shortness of breath, coughing blood, high fever, or a prolonged cough.",
+  "Bagian putih mata tampak merah, dapat disertai gatal, berair, rasa mengganjal, atau kotoran mata.": "The white of the eye looks red and may be itchy, watery, gritty, or have discharge.",
+  "Jangan menggosok mata, cuci tangan sebelum menyentuh area mata, hentikan sementara penggunaan lensa kontak, dan gunakan kompres sejuk dengan kain bersih.": "Do not rub the eye. Wash your hands before touching the eye area, stop wearing contact lenses temporarily, and use a cool compress with a clean cloth.",
+  "Segera periksa jika mata terasa sangat nyeri, penglihatan berubah, sensitif terhadap cahaya, terkena bahan kimia, atau mata merah terjadi saat memakai lensa kontak.": "Seek urgent care for severe eye pain, vision changes, light sensitivity, chemical exposure, or red eye while wearing contact lenses.",
+  "Nyeri atau kaku di punggung yang dapat memburuk saat bergerak atau mempertahankan posisi tertentu.": "Back pain or stiffness that may worsen with movement or certain positions.",
+  "Tetap bergerak ringan sesuai kemampuan, hindari mengangkat beban berat, dan gunakan kompres hangat atau dingin yang dibungkus kain.": "Keep gently active as able, avoid heavy lifting, and use a warm or cold pack wrapped in cloth.",
+  "Segera cari pertolongan jika disertai kelemahan atau kebas pada kedua kaki, kebas di sekitar selangkangan, sulit menahan buang air, demam, atau nyeri setelah cedera berat.": "Seek urgent care for weakness or numbness in both legs, numbness around the groin, loss of bladder or bowel control, fever, or pain after a serious injury.",
+  "Sulit mulai tidur, sering terbangun malam hari, atau merasa tidak segar saat bangun.": "Difficulty falling asleep, waking often at night, or not feeling refreshed on waking.",
+  "Tidur dan bangun pada waktu teratur, kurangi kafein pada sore atau malam hari, batasi penggunaan gawai menjelang tidur, dan ciptakan kamar yang nyaman.": "Keep a regular sleep and wake schedule, reduce caffeine in the afternoon and evening, limit screen use before bed, and make your bedroom comfortable.",
+  "Konsultasikan dengan tenaga kesehatan jika berlangsung terus-menerus, mengganggu aktivitas harian, atau disertai gangguan suasana hati yang berat.": "Consult a healthcare professional if it persists, affects daily activities, or occurs with severe mood changes.",
+  "Luka kecil atau goresan pada kulit, terkadang disertai sedikit perdarahan dan rasa perih.": "A small cut or scrape on the skin, sometimes with slight bleeding and stinging.",
+  "Cuci tangan, tekan luka dengan kain kasa bersih jika berdarah, bilas luka menggunakan air bersih mengalir, lalu tutup dengan balutan steril.": "Wash your hands. If bleeding, apply pressure with clean gauze, rinse the wound under clean running water, then cover it with a sterile dressing.",
+  "Cari pertolongan jika perdarahan tidak berhenti, luka dalam atau menganga, terdapat benda tertancap, muncul nanah atau kemerahan yang meluas, atau status vaksin tetanus tidak jelas.": "Seek medical care if bleeding will not stop, the wound is deep or gaping, an object is embedded, pus or spreading redness appears, or tetanus vaccination status is uncertain.",
+  "Gusi tampak membesar atau kemerahan, terasa nyeri, dan dapat berdarah saat menyikat gigi.": "The gums may look swollen or red, feel sore, and bleed during brushing.",
+  "Sikat gigi dengan lembut menggunakan sikat berbulu halus, bersihkan sela gigi dengan hati-hati, dan berkumur dengan air garam hangat jika nyaman.": "Brush gently with a soft-bristled toothbrush, clean between teeth carefully, and rinse with warm salt water if comfortable.",
+  "Segera cari pertolongan jika pembengkakan menyebar ke wajah atau leher, disertai demam, sulit menelan, atau sulit bernapas. Buat janji dengan dokter gigi untuk mencari penyebabnya.": "Seek urgent care if swelling spreads to the face or neck, or is accompanied by fever, difficulty swallowing, or difficulty breathing. Make a dental appointment to identify the cause.",
+  "Membantu meredakan nyeri dan demam.": "Helps relieve pain and fever.",
+  "Hindari penggunaan beberapa obat yang sama-sama mengandung paracetamol. Dosis berlebihan dapat merusak hati.": "Avoid taking multiple medicines that contain paracetamol. An overdose can damage the liver.",
+  "Membantu meredakan nyeri haid, nyeri otot, dan peradangan.": "Helps relieve menstrual cramps, muscle pain, and inflammation.",
+  "Dapat mengganggu lambung dan ginjal. Tidak cocok untuk semua orang, termasuk sebagian orang dengan tukak lambung atau gangguan ginjal. Konsultasikan kepada tenaga kesehatan jika ragu.": "May affect the stomach and kidneys. It is not suitable for everyone, including some people with stomach ulcers or kidney problems. Ask a healthcare professional if unsure.",
+  "Membantu meredakan kram perut saat menstruasi.": "Helps relieve menstrual cramps.",
+  "Gunakan suhu hangat yang nyaman agar kulit tidak terbakar.": "Use a comfortably warm temperature to avoid burns.",
+  "Membantu meredakan gejala akibat asam lambung.": "Helps relieve symptoms related to acid reflux.",
+  "Ikuti petunjuk kemasan dan perhatikan jarak penggunaan dengan obat lain.": "Follow the package instructions and check how it should be spaced from other medicines.",
+  "Membantu mengganti cairan dan elektrolit yang hilang akibat diare atau muntah.": "Helps replace fluids and electrolytes lost through diarrhea or vomiting.",
+  "Larutkan sesuai petunjuk kemasan. Cari pertolongan medis jika tidak mampu minum, sangat lemas, atau mengalami tanda dehidrasi berat.": "Prepare according to package instructions. Seek medical care if unable to drink, extremely weak, or showing signs of severe dehydration.",
+  "Membantu meredakan gatal akibat alergi, biduran, dan gejala alergi tertentu.": "Helps relieve itching from allergies, hives, and certain allergic symptoms.",
+  "Dapat menyebabkan kantuk. Sesuaikan penggunaan dengan petunjuk tenaga kesehatan.": "May cause drowsiness. Use according to a healthcare professional’s instructions.",
+  "Membantu meredakan gejala alergi tertentu.": "Helps relieve certain allergy symptoms.",
+  "Ikuti petunjuk kemasan. Konsultasikan kepada apoteker jika ragu.": "Follow the package instructions. Ask a pharmacist if unsure.",
+  "Obat penekan batuk yang dapat digunakan untuk batuk kering tertentu.": "A cough suppressant that may be used for certain dry coughs.",
+  "Tidak cocok untuk semua jenis batuk dan dapat berinteraksi dengan obat lain. Konsultasikan kepada apoteker sebelum digunakan.": "Not suitable for every type of cough and may interact with other medicines. Ask a pharmacist before use.",
+  "Ekspektoran yang membantu mengencerkan dahak agar lebih mudah dikeluarkan.": "An expectorant that helps thin mucus so it is easier to cough up.",
+  "Ikuti petunjuk kemasan dan cukup minum. Periksakan diri jika batuk disertai sesak napas, darah, atau berlangsung lama.": "Follow package instructions and drink enough fluids. Seek medical advice for cough with shortness of breath, blood, or prolonged symptoms.",
+  "Membantu membersihkan rongga hidung dan mengencerkan lendir.": "Helps rinse the nasal passages and loosen mucus.",
+  "Gunakan sesuai petunjuk produk.": "Use according to the product instructions.",
+  "Membantu menjaga kelembapan kulit.": "Helps keep the skin moisturized.",
+  "Hentikan penggunaan jika timbul iritasi.": "Stop using if irritation occurs.",
+  "Kortikosteroid topikal untuk kondisi peradangan kulit tertentu.": "A topical corticosteroid for certain inflammatory skin conditions.",
+  "Gunakan hanya sesuai petunjuk tenaga kesehatan. Tidak cocok untuk semua ruam, infeksi kulit, atau semua area tubuh.": "Use only as directed by a healthcare professional. It is not suitable for every rash, skin infection, or body area.",
+  "Dapat membantu meredakan batuk pada sebagian orang.": "May help relieve cough in some people.",
+  "Jangan diberikan kepada bayi berusia di bawah 1 tahun.": "Do not give to infants under 1 year old.",
+  "Serat yang dapat membantu melancarkan buang air besar.": "Fiber that may help promote bowel movements.",
+  "Minum dengan cairan yang cukup. Konsultasikan kepada tenaga kesehatan jika sembelit menetap atau disertai nyeri perut berat.": "Take with enough fluids. Consult a healthcare professional if constipation persists or is accompanied by severe abdominal pain.",
+  "Berkumur dengan air garam hangat dapat membantu meredakan sakit tenggorokan.": "Gargling with warm salt water may help soothe a sore throat.",
+  "Jangan ditelan. Cari pertolongan medis jika sulit bernapas atau menelan.": "Do not swallow. Seek medical care if breathing or swallowing is difficult.",
+  "Membantu mengurangi nyeri dan pembengkakan ringan.": "Helps reduce mild pain and swelling.",
+  "Bungkus kompres dengan kain dan jangan tempelkan es langsung ke kulit.": "Wrap the cold pack in cloth and do not apply ice directly to the skin.",
+  "Istirahat dan cukup minum dapat membantu jika keluhan berkaitan dengan kelelahan atau kekurangan cairan ringan.": "Rest and adequate fluids may help when symptoms are related to fatigue or mild dehydration.",
+  "Pusing dapat memiliki banyak penyebab. Cari pertolongan darurat jika disertai pingsan, nyeri dada, kelemahan satu sisi, atau sakit kepala mendadak yang sangat berat.": "Dizziness can have many causes. Seek emergency care if it occurs with fainting, chest pain, one-sided weakness, or a sudden severe headache.",
+  "Pilihan obat antimual bergantung pada penyebab mual atau muntah dan kondisi pengguna.": "The choice of anti-nausea medicine depends on the cause of nausea or vomiting and the person’s health.",
+  "Konsultasikan kepada tenaga kesehatan sebelum memilih obat. Tidak semua obat antimual cocok untuk semua orang.": "Consult a healthcare professional before choosing medicine. Not all anti-nausea medicines are suitable for everyone.",
+  "Membantu meredakan nyeri telinga.": "Helps relieve ear pain.",
+  "Gunakan sesuai petunjuk pada kemasan. Jika nyeri berat, keluar cairan dari telinga, atau pendengaran menurun, segera periksa ke tenaga kesehatan.": "Use according to package instructions. Seek medical care promptly for severe pain, ear discharge, or reduced hearing.",
+  "Digunakan untuk infeksi bakteri tertentu sesuai hasil pemeriksaan.": "Used for certain bacterial infections based on clinical assessment.",
+  "Harus berdasarkan pemeriksaan dan resep tenaga kesehatan. Tidak semua sakit telinga disebabkan oleh bakteri.": "Requires assessment and a prescription from a healthcare professional. Not all earaches are caused by bacteria.",
+  "Digunakan untuk mengatasi infeksi jamur pada telinga tertentu.": "Used to treat certain fungal ear infections.",
+  "Gunakan setelah diperiksa tenaga kesehatan. Jangan memakai tetes telinga sembarangan jika gendang telinga mungkin berlubang.": "Use after assessment by a healthcare professional. Do not use ear drops without advice if the eardrum may be perforated.",
+  "Membantu menjaga kelembapan dan mengurangi kulit kering.": "Helps moisturize the skin and reduce dryness.",
+  "Pilih produk tanpa pewangi jika kulit sensitif. Hentikan jika terjadi iritasi.": "Choose fragrance-free products if your skin is sensitive. Stop if irritation occurs.",
+  "Membantu melindungi luka di mulut dan mengurangi rasa tidak nyaman.": "Helps protect mouth sores and reduce discomfort.",
+  "Pilih produk yang memang diperuntukkan bagi rongga mulut dan ikuti petunjuk kemasan.": "Choose a product intended for use in the mouth and follow the package instructions.",
+  "Membantu mengurangi bengkak dan rasa nyeri pada memar baru.": "Helps reduce swelling and pain from a recent bruise.",
+  "Bungkus kompres dengan kain dan jangan menempelkan es langsung ke kulit.": "Wrap the cold pack in cloth and do not apply ice directly to the skin.",
+  "Antihistamin untuk membantu meredakan gatal akibat biduran.": "An antihistamine that helps relieve itching from hives.",
+  "Dapat menyebabkan kantuk. Gunakan sesuai petunjuk tenaga kesehatan atau kemasan.": "May cause drowsiness. Use according to healthcare professional or package instructions.",
+  "Membantu mengurangi refluks asam pada sebagian orang dengan membentuk lapisan penghalang di atas isi lambung.": "May reduce acid reflux in some people by forming a barrier over stomach contents.",
+  "Gunakan sesuai petunjuk produk dan konsultasikan jika gejala sering berulang.": "Use according to product instructions and consult a healthcare professional if symptoms recur frequently.",
+  "Membantu melembapkan hidung dan mengencerkan lendir.": "Helps moisturize the nose and loosen mucus.",
+  "Gunakan sesuai petunjuk produk dan jaga kebersihan alat.": "Use according to product instructions and keep the device clean.",
+  "Tidak ada satu obat khusus untuk semua penyebab lemas. Penanganan bergantung pada penyebabnya.": "There is no single medicine for every cause of fatigue. Treatment depends on the cause.",
+  "Jangan mengonsumsi suplemen atau obat sembarangan. Periksa jika keluhan menetap atau memburuk.": "Do not take supplements or medicines indiscriminately. Seek assessment if symptoms persist or worsen.",
+  "Obat bronkodilator yang membantu melebarkan saluran napas pada kondisi tertentu, seperti asma.": "A bronchodilator that helps open the airways in certain conditions, such as asthma.",
+  "Gunakan sesuai resep dan petunjuk tenaga kesehatan. Tidak semua sesak napas disebabkan oleh asma. Jika sesak berat, sulit berbicara, atau bibir membiru, segera cari pertolongan darurat.": "Use as prescribed and directed by a healthcare professional. Not all shortness of breath is caused by asthma. Seek emergency care for severe breathlessness, difficulty speaking, or blue lips.",
+  "Membantu meredakan sakit kepala tertentu.": "Helps relieve certain headaches.",
+  "Tidak cocok untuk semua orang. Hindari jika memiliki tukak lambung, penyakit ginjal tertentu, alergi NSAID, atau sedang hamil kecuali atas arahan tenaga kesehatan.": "Not suitable for everyone. Avoid if you have stomach ulcers, certain kidney diseases, an NSAID allergy, or are pregnant unless advised by a healthcare professional.",
+  "Produk tertentu dapat membantu meredakan nyeri sementara sesuai kandungan dan petunjuk penggunaannya.": "Certain products may provide temporary pain relief when used according to their ingredients and instructions.",
+  "Gunakan hanya produk yang memang diperuntukkan bagi penggunaan di mulut. Jangan mengoleskan aspirin langsung ke gigi atau gusi.": "Use only products intended for oral use. Do not apply aspirin directly to teeth or gums.",
+  "Membantu menjaga kebersihan mulut, tetapi tidak mengatasi semua penyebab sakit gigi.": "Helps maintain oral hygiene but does not treat every cause of toothache.",
+  "Gunakan sesuai petunjuk produk. Sakit gigi menetap atau disertai bengkak perlu diperiksa dokter gigi.": "Use according to product instructions. Persistent toothache or pain with swelling should be assessed by a dentist.",
+  "Membantu meredakan mata kering dan iritasi ringan.": "Helps relieve dry eyes and mild irritation.",
+  "Tidak mengatasi semua penyebab mata merah. Gunakan produk khusus mata sesuai petunjuk.": "Does not treat every cause of red eye. Use products specifically intended for the eyes as directed.",
+  "Membantu meredakan mata merah dan gatal akibat alergi.": "Helps relieve red, itchy eyes caused by allergies.",
+  "Gunakan sesuai petunjuk kemasan atau saran tenaga kesehatan.": "Use according to package instructions or advice from a healthcare professional.",
+  "Kompres hangat dapat membantu mengurangi kekakuan dan ketidaknyamanan otot.": "A warm compress may help reduce muscle stiffness and discomfort.",
+  "Bungkus sumber panas dengan kain dan hindari suhu terlalu tinggi.": "Wrap the heat source in cloth and avoid excessive temperatures.",
+  "Membantu memperbaiki kebiasaan tidur, seperti menjaga jadwal tidur teratur dan mengurangi kafein pada malam hari.": "Helps improve sleep habits, such as keeping a regular sleep schedule and reducing caffeine at night.",
+  "Bukan obat tidur. Konsultasikan dengan tenaga kesehatan jika gangguan tidur terus berlanjut.": "This is not a sleeping medicine. Consult a healthcare professional if sleep problems continue.",
+  "Air bersih mengalir dapat digunakan untuk membilas kotoran dari luka ringan.": "Clean running water can be used to rinse debris from a minor wound.",
+  "Hindari menuangkan alkohol ke dalam luka. Perhatikan tanda infeksi dan status vaksin tetanus.": "Avoid pouring alcohol into a wound. Watch for signs of infection and check tetanus vaccination status.",
+  "Produk tertentu dapat membantu mengendalikan plak sebagai bagian dari perawatan mulut.": "Certain products may help control plaque as part of oral care.",
+  "Gunakan sesuai petunjuk. Tidak menggantikan pemeriksaan dokter gigi.": "Use as directed. This does not replace a dental examination.",
+  "Paracetamol": "Paracetamol",
+  "Ibuprofen": "Ibuprofen",
+  "Kompres hangat": "Warm Compress",
+  "Antasida": "Antacid",
+  "Oralit": "Oral Rehydration Solution",
+  "Cetirizine": "Cetirizine",
+  "Loratadine": "Loratadine",
+  "Dekstrometorfan": "Dextromethorphan",
+  "Guaifenesin": "Guaifenesin",
+  "Larutan saline hidung": "Nasal Saline Solution",
+  "Semprotan saline hidung": "Nasal Saline Spray",
+  "Krim pelembap": "Moisturizing Cream",
+  "Krim hidrokortison": "Hydrocortisone Cream",
+  "Madu": "Honey",
+  "Psyllium": "Psyllium",
+  "Larutan saline kumur": "Saltwater Gargle",
+  "Kompres dingin": "Cold Compress",
+  "Cairan dan istirahat": "Fluids and Rest",
+  "Obat antimual": "Anti-nausea Medicine",
+  "Tetes telinga antibiotik": "Antibiotic Ear Drops",
+  "Tetes telinga antijamur": "Antifungal Ear Drops",
+  "Larutan pelembap kulit": "Skin Moisturizing Lotion",
+  "Gel pelindung sariawan": "Mouth Ulcer Protective Gel",
+  "Alginat": "Alginate",
+  "Informasi penanganan lemas": "Fatigue Care Information",
+  "Salbutamol inhaler": "Salbutamol Inhaler",
+  "Obat sakit gigi topikal": "Topical Toothache Relief",
+  "Obat kumur antiseptik": "Antiseptic Mouthwash",
+  "Air Mata Buatan": "Artificial Tears",
+  "Tetes Mata Antihistamin": "Antihistamine Eye Drops",
+  "Gel atau Plester Hangat": "Heat Gel or Patch",
+  "Informasi Bantuan Tidur": "Sleep Support Information",
+  "Larutan Pembersih Luka": "Wound Cleansing Solution",
+  "Obat Kumur Antiseptik": "Antiseptic Mouthwash"
+};
+
+function terjemahkanKonten(teks) {
+  if ((mcStorage.getItem('medicareBahasa') || 'id') !== 'en') return teks;
+  return kamusSemuaKontenEN[teks] || kamusKontenMedis[teks] || teks;
+}
+
+const detailKeluhan = {
+  "sakit kepala": {
+    judul: "Informasi Sakit Kepala",
+    gejala: "Nyeri atau rasa tidak nyaman di kepala.",
+    perawatan: "Istirahat, minum cukup air, dan perhatikan pemicu seperti kurang tidur.",
+    bahaya: "Segera cari pertolongan jika sakit kepala muncul mendadak dan sangat berat, atau disertai kelemahan satu sisi tubuh maupun gangguan kesadaran."
+  },
+  "demam": {
+    judul: "Informasi Demam",
+    gejala: "Suhu tubuh meningkat dan dapat disertai menggigil atau lemas.",
+    perawatan: "Istirahat, cukup minum, dan ukur suhu tubuh.",
+    bahaya: "Cari pertolongan medis jika demam disertai sesak napas, kebingungan, kejang, atau kondisi memburuk."
+  },
+  "batuk": {
+    judul: "Informasi Batuk",
+    gejala: "Batuk dapat berupa batuk kering atau berdahak.",
+    perawatan: "Minum cukup cairan dan hindari asap rokok.",
+    bahaya: "Segera cari pertolongan jika batuk disertai sesak napas berat atau batuk darah."
+  },
+  "diare": {
+    judul: "Informasi Diare",
+    gejala: "Buang air besar lebih sering dengan tinja cair.",
+    perawatan: "Minum oralit sesuai petunjuk kemasan untuk membantu mengganti cairan yang hilang.",
+    bahaya: "Segera cari pertolongan jika mengalami dehidrasi berat, tinja berdarah, atau nyeri perut berat."
+  },
+    "sakit gigi": {
+    judul: "Informasi Sakit Gigi",
+    gejala: "Nyeri pada gigi atau area sekitar gigi.",
+    perawatan: "Bersihkan gigi dengan lembut dan hindari makanan yang memicu nyeri. Periksakan ke dokter gigi.",
+    bahaya: "Segera cari pertolongan jika terjadi pembengkakan wajah atau leher, demam, atau kesulitan menelan maupun bernapas."
+  },
+  "sakit tenggorokan": {
+    judul: "Informasi Sakit Tenggorokan",
+    gejala: "Tenggorokan terasa nyeri atau sakit saat menelan.",
+    perawatan: "Istirahat, minum cukup cairan, dan hindari asap rokok.",
+    bahaya: "Segera cari pertolongan jika sulit bernapas atau tidak mampu menelan cairan."
+  },
+  "pilek": {
+    judul: "Informasi Pilek",
+    gejala: "Hidung berair atau tersumbat dan bersin.",
+    perawatan: "Istirahat, cukup minum, dan gunakan larutan saline sesuai petunjuk bila diperlukan.",
+    bahaya: "Periksakan diri jika sesak napas, gejala memburuk, atau berlangsung lama."
+  },
+    "mual": {
+    judul: "Informasi Mual",
+    gejala: "Perasaan ingin muntah, terkadang disertai tidak nyaman di perut.",
+    perawatan: "Minum sedikit-sedikit tetapi sering dan makan dalam porsi kecil jika mampu.",
+    bahaya: "Cari pertolongan medis jika disertai nyeri perut hebat, muntah darah, atau tanda dehidrasi."
+  },
+  "muntah": {
+    judul: "Informasi Muntah",
+    gejala: "Isi lambung keluar melalui mulut.",
+    perawatan: "Minum cairan sedikit-sedikit tetapi sering. Oralit dapat membantu mengganti cairan yang hilang.",
+    bahaya: "Segera cari pertolongan jika muntah darah, nyeri perut hebat, kebingungan, atau tidak mampu mempertahankan cairan."
+  },
+  "sembelit": {
+    judul: "Informasi Sembelit",
+    gejala: "Buang air besar jarang atau tinja keras dan sulit dikeluarkan.",
+    perawatan: "Tingkatkan serat secara bertahap, cukup minum, dan lakukan aktivitas fisik sesuai kemampuan.",
+    bahaya: "Cari pertolongan jika disertai nyeri perut hebat, muntah, atau perut membengkak."
+  },
+  "nyeri perut": {
+    judul: "Informasi Nyeri Perut",
+    gejala: "Rasa sakit atau tidak nyaman di area perut dengan berbagai kemungkinan penyebab.",
+    perawatan: "Istirahat dan perhatikan lokasi, durasi, serta gejala penyerta. Hindari menebak penyebab sendiri.",
+    bahaya: "Segera cari pertolongan jika nyeri sangat berat atau mendadak, perut kaku, muntah darah, atau pingsan."
+  },
+  "pusing": {
+    judul: "Informasi Pusing",
+    gejala: "Kepala terasa ringan, berputar, atau tidak seimbang.",
+    perawatan: "Duduk atau berbaring agar tidak jatuh, lalu bangun perlahan.",
+    bahaya: "Segera cari pertolongan jika pusing mendadak disertai kelemahan satu sisi tubuh, gangguan bicara, atau pingsan."
+  },
+"alergi": {
+  judul: "Informasi Alergi",
+  gejala: "Gatal, ruam, bersin, atau hidung berair.",
+  perawatan: "Hindari pemicu alergi dan pantau gejala.",
+  bahaya: "Jika sesak napas atau bibir dan lidah membengkak, segera cari pertolongan darurat."
+},
+"gatal": {
+  judul: "Informasi Gatal",
+  gejala: "Kulit terasa gatal, terkadang disertai ruam.",
+  perawatan: "Hindari menggaruk dan hindari bahan yang memicu iritasi.",
+  bahaya: "Cari pertolongan jika disertai sesak napas atau pembengkakan."
+},
+"nyeri otot": {
+  judul: "Informasi Nyeri Otot",
+  gejala: "Otot terasa pegal, kaku, atau nyeri.",
+  perawatan: "Istirahat dan lakukan peregangan ringan jika memungkinkan.",
+  bahaya: "Cari pertolongan jika nyeri berat, kelemahan mendadak, atau urine berwarna gelap."
+},
+"sakit telinga": {
+  judul: "Informasi Sakit Telinga",
+  gejala: "Telinga terasa nyeri, penuh, atau tidak nyaman.",
+  perawatan: "Jangan memasukkan benda atau cairan sembarangan ke telinga.",
+  bahaya: "Cari pertolongan jika keluar darah, demam tinggi, atau pendengaran menurun."
+},
+"sesak napas": {
+  judul: "Informasi Sesak Napas",
+  gejala: "Napas terasa berat atau sulit bernapas.",
+  perawatan: "Hentikan aktivitas dan duduk dalam posisi tegak.",
+  bahaya: "Sesak berat, bibir membiru, atau sulit berbicara merupakan kondisi darurat."
+},    
+"nyeri haid": {
+  judul: "Informasi Nyeri Haid",
+  gejala: "Kram perut bagian bawah, nyeri pinggang, dan terkadang mual.",
+  perawatan: "Istirahat, kompres hangat pada perut bagian bawah, dan cukup minum.",
+  bahaya: "Periksa ke tenaga kesehatan jika nyeri sangat berat, perdarahan berlebihan, atau disertai demam."
+    },
+    "dehidrasi": {
+    judul: "Informasi Dehidrasi",
+    gejala: "Haus, mulut kering, urine berwarna pekat, dan buang air kecil lebih sedikit.",
+    perawatan: "Minum sedikit demi sedikit tetapi sering. Gunakan oralit jika kehilangan cairan akibat diare atau muntah.",
+    bahaya: "Segera cari pertolongan jika bingung, sangat lemas, pingsan, atau sulit minum."
+},
+"lemas": {
+    judul: "Informasi Lemas",
+    gejala: "Tubuh terasa kurang bertenaga, cepat lelah, atau sulit beraktivitas.",
+    perawatan: "Istirahat, makan bergizi, cukup minum, dan tidur teratur.",
+    bahaya: "Segera cari pertolongan jika lemas mendadak, sesak napas, nyeri dada, pingsan, atau kelemahan satu sisi tubuh."
+},
+"kulit kering": {
+    judul: "Informasi Kulit Kering",
+    gejala: "Kulit terasa kasar, bersisik, tertarik, atau gatal.",
+    perawatan: "Gunakan pelembap tanpa pewangi setelah mandi, hindari air terlalu panas, dan gunakan sabun lembut.",
+    bahaya: "Periksa jika kulit pecah-pecah parah, berdarah, bernanah, atau menunjukkan tanda infeksi."
+},
+"sariawan": {
+    judul: "Informasi Sariawan",
+    gejala: "Luka kecil di mulut yang terasa perih saat makan atau minum.",
+    perawatan: "Berkumur dengan air garam ringan, pilih makanan lunak, dan hindari makanan pedas atau asam.",
+    bahaya: "Periksa jika sulit menelan, demam, sariawan sering berulang, atau tidak sembuh dalam dua minggu."
+},
+"memar": {
+    judul: "Informasi Memar",
+    gejala: "Perubahan warna kulit, nyeri, atau bengkak setelah terbentur.",
+    perawatan: "Kompres dingin yang dibungkus kain selama 15–20 menit dan istirahatkan bagian yang terkena.",
+    bahaya: "Periksa jika memar membesar, nyeri berat, sering muncul tanpa sebab, atau disertai perdarahan."
+},
+"biduran": {
+    judul: "Informasi Biduran",
+    gejala: "Bentol menonjol yang gatal, kemerahan, dan dapat berpindah tempat.",
+    perawatan: "Kompres dingin, hindari pemicu yang diketahui, dan jangan menggaruk kulit.",
+    bahaya: "Jika bibir atau lidah membengkak, tenggorokan terasa menyempit, atau sulit bernapas, segera cari pertolongan darurat."
+},
+"asam lambung": {
+    judul: "Informasi Asam Lambung",
+    gejala: "Rasa terbakar di dada, rasa asam di mulut, atau cairan lambung naik.",
+    perawatan: "Makan dalam porsi kecil, hindari pemicu, dan jangan berbaring selama 2–3 jam setelah makan.",
+    bahaya: "Cari pertolongan segera jika nyeri dada berat, sesak napas, muntah darah, atau tinja hitam."
+},
+"maag": {
+    judul: "Informasi Maag",
+    gejala: "Nyeri atau perih di ulu hati, kembung, mual, dan cepat kenyang.",
+    perawatan: "Makan teratur sesuai toleransi, hindari pemicu keluhan, dan hindari penggunaan obat antinyeri sembarangan.",
+    bahaya: "Segera periksa jika muntah darah, tinja hitam, nyeri berat, atau muntah terus-menerus."
+},
+"hidung tersumbat": {
+    judul: "Informasi Hidung Tersumbat",
+    gejala: "Sulit bernapas melalui hidung, hidung terasa penuh, atau pilek.",
+    perawatan: "Gunakan semprotan saline, minum cukup, dan istirahat.",
+    bahaya: "Periksa jika disertai sesak napas, demam tinggi, nyeri wajah berat, atau keluhan menetap."
+},
+"batuk berdahak": {
+    judul: "Informasi Batuk Berdahak",
+    gejala: "Batuk disertai lendir atau dahak dari saluran pernapasan.",
+    perawatan: "Minum cukup, istirahat, dan hindari asap rokok.",
+    bahaya: "Segera periksa jika batuk darah, sesak napas, nyeri dada, atau kondisi memburuk."
+},
+"batuk kering": {
+    judul: "Informasi Batuk Kering",
+    gejala: "Batuk tanpa dahak yang dapat menyebabkan tenggorokan terasa gatal atau iritasi.",
+    perawatan: "Minum air hangat, hindari asap dan debu, serta gunakan madu untuk orang berusia di atas satu tahun jika sesuai.",
+    bahaya: "Periksa jika batuk disertai sesak napas, batuk darah, demam tinggi, atau berlangsung lama."
+},
+"mata merah": {
+    judul: "Informasi Mata Merah",
+    gejala: "Bagian putih mata tampak merah, dapat disertai gatal, berair, rasa mengganjal, atau kotoran mata.",
+    perawatan: "Jangan menggosok mata, cuci tangan sebelum menyentuh area mata, hentikan sementara penggunaan lensa kontak, dan gunakan kompres sejuk dengan kain bersih.",
+    bahaya: "Segera periksa jika mata terasa sangat nyeri, penglihatan berubah, sensitif terhadap cahaya, terkena bahan kimia, atau mata merah terjadi saat memakai lensa kontak."
+},
+"nyeri punggung": {
+    judul: "Informasi Nyeri Punggung",
+    gejala: "Nyeri atau kaku di punggung yang dapat memburuk saat bergerak atau mempertahankan posisi tertentu.",
+    perawatan: "Tetap bergerak ringan sesuai kemampuan, hindari mengangkat beban berat, dan gunakan kompres hangat atau dingin yang dibungkus kain.",
+    bahaya: "Segera cari pertolongan jika disertai kelemahan atau kebas pada kedua kaki, kebas di sekitar selangkangan, sulit menahan buang air, demam, atau nyeri setelah cedera berat."
+},
+"susah tidur": {
+    judul: "Informasi Susah Tidur",
+    gejala: "Sulit mulai tidur, sering terbangun malam hari, atau merasa tidak segar saat bangun.",
+    perawatan: "Tidur dan bangun pada waktu teratur, kurangi kafein pada sore atau malam hari, batasi penggunaan gawai menjelang tidur, dan ciptakan kamar yang nyaman.",
+    bahaya: "Konsultasikan dengan tenaga kesehatan jika berlangsung terus-menerus, mengganggu aktivitas harian, atau disertai gangguan suasana hati yang berat."
+},
+"luka ringan": {
+    judul: "Informasi Luka Ringan",
+    gejala: "Luka kecil atau goresan pada kulit, terkadang disertai sedikit perdarahan dan rasa perih.",
+    perawatan: "Cuci tangan, tekan luka dengan kain kasa bersih jika berdarah, bilas luka menggunakan air bersih mengalir, lalu tutup dengan balutan steril.",
+    bahaya: "Cari pertolongan jika perdarahan tidak berhenti, luka dalam atau menganga, terdapat benda tertancap, muncul nanah atau kemerahan yang meluas, atau status vaksin tetanus tidak jelas."
+},
+"gusi bengkak": {
+    judul: "Informasi Gusi Bengkak",
+    gejala: "Gusi tampak membesar atau kemerahan, terasa nyeri, dan dapat berdarah saat menyikat gigi.",
+    perawatan: "Sikat gigi dengan lembut menggunakan sikat berbulu halus, bersihkan sela gigi dengan hati-hati, dan berkumur dengan air garam hangat jika nyaman.",
+    bahaya: "Segera cari pertolongan jika pembengkakan menyebar ke wajah atau leher, disertai demam, sulit menelan, atau sulit bernapas. Buat janji dengan dokter gigi untuk mencari penyebabnya."
+},
+};
+
+
+const databaseObat = [
+  
+{
+    nama: "Paracetamol",
+    kataKunci: [
+        "paracetamol", "parasetamol",
+        "sakit kepala", "demam", "sakit gigi",
+        "nyeri otot"
+    ],
+    kegunaan: "Membantu meredakan nyeri dan demam.",
+    efekSamping: "Dapat menimbulkan reaksi alergi; efek samping serius dapat terjadi jika digunakan berlebihan.",
+    perhatian: "Hindari penggunaan beberapa obat yang sama-sama mengandung paracetamol. Dosis berlebihan dapat merusak hati. Konsultasikan kepada tenaga kesehatan jika memiliki penyakit hati.",
+    interaksi: "Periksa kandungan obat lain agar tidak menggandakan paracetamol. Penggunaan bersama warfarin secara rutin perlu dikonsultasikan kepada tenaga kesehatan.",
+    peringatan: "Dosis berlebihan dapat merusak hati."
+},
+
+  {
+    nama: "Ibuprofen",
+    kataKunci: [
+      "ibuprofen", "nyeri haid", "kram menstruasi",
+      "dismenore", "nyeri otot", "peradangan"
+    ],
+    kegunaan: "Membantu meredakan nyeri haid, nyeri otot, dan peradangan.",
+    peringatan: "Dapat mengganggu lambung dan ginjal. Tidak cocok untuk semua orang, termasuk sebagian orang dengan tukak lambung atau gangguan ginjal. Konsultasikan kepada tenaga kesehatan jika ragu."
+  },
+  {
+    nama: "Kompres hangat",
+    kataKunci: [
+      "nyeri haid", "kram menstruasi", "dismenore"
+    ],
+    kegunaan: "Membantu meredakan kram perut saat menstruasi.",
+    peringatan: "Gunakan suhu hangat yang nyaman agar kulit tidak terbakar."
+  },
+  {
+    nama: "Antasida",
+    kataKunci: [
+      "antasida", "antacid", "asam lambung", "maag",
+      "perut perih"
+    ],
+    kegunaan: "Membantu meredakan gejala akibat asam lambung.",
+    peringatan: "Ikuti petunjuk kemasan dan perhatikan jarak penggunaan dengan obat lain."
+  },
+  {
+    nama: "Oralit",
+    kataKunci: ["oralit", "diare", "mencret", "muntah", "dehidrasi"],
+    kegunaan: "Membantu mengganti cairan dan elektrolit yang hilang akibat diare atau muntah.",
+    peringatan: "Larutkan sesuai petunjuk kemasan. Cari pertolongan medis jika tidak mampu minum, sangat lemas, atau mengalami tanda dehidrasi berat."
+  },
+  {
+    nama: "Cetirizine",
+    kataKunci: ["cetirizine", "alergi", "bersin", "gatal", "biduran"],
+    kegunaan: "Membantu meredakan gatal akibat alergi, biduran, dan gejala alergi tertentu.",
+    peringatan: "Dapat menyebabkan kantuk. Sesuaikan penggunaan dengan petunjuk tenaga kesehatan."
+  },
+  {
+    nama: "Loratadine",
+    kataKunci: ["loratadine", "alergi", "bersin", "hidung berair", "gatal", "biduran"],
+    kegunaan: "Membantu meredakan gejala alergi tertentu.",
+    peringatan: "Ikuti petunjuk kemasan. Konsultasikan kepada apoteker jika ragu."
+  },
+  {
+    nama: "Dekstrometorfan",
+    kataKunci: ["dekstrometorfan", "batuk kering"],
+    kegunaan: "Obat penekan batuk yang dapat digunakan untuk batuk kering tertentu.",
+    peringatan: "Tidak cocok untuk semua jenis batuk dan dapat berinteraksi dengan obat lain. Konsultasikan kepada apoteker sebelum digunakan."
+  },
+  {
+    nama: "Guaifenesin",
+    kataKunci: ["guaifenesin", "batuk berdahak"],
+    kegunaan: "Ekspektoran yang membantu mengencerkan dahak agar lebih mudah dikeluarkan.",
+    peringatan: "Ikuti petunjuk kemasan dan cukup minum. Periksakan diri jika batuk disertai sesak napas, darah, atau berlangsung lama."
+  },
+  {
+    nama: "Larutan saline hidung",
+    kataKunci: ["hidung tersumbat", "pilek", "ingus", "hidung berair"],
+    kegunaan: "Membantu membersihkan rongga hidung dan mengencerkan lendir.",
+    peringatan: "Gunakan sesuai petunjuk produk."
+  },
+  {
+    nama: "Krim pelembap",
+    kataKunci: ["kulit kering", "kulit pecah", "pelembap kulit"],
+    kegunaan: "Membantu menjaga kelembapan kulit.",
+    peringatan: "Hentikan penggunaan jika timbul iritasi."
+  },
+  {
+    nama: "Krim hidrokortison",
+    kataKunci: ["hidrokortison", "gatal akibat peradangan kulit"],
+    kegunaan: "Kortikosteroid topikal untuk kondisi peradangan kulit tertentu.",
+    peringatan: "Gunakan hanya sesuai petunjuk tenaga kesehatan. Tidak cocok untuk semua ruam, infeksi kulit, atau semua area tubuh."
+  },
+  {
+    nama: "Madu",
+    kataKunci: ["madu", "batuk malam"],
+    kegunaan: "Dapat membantu meredakan batuk pada sebagian orang.",
+    peringatan: "Jangan diberikan kepada bayi berusia di bawah 1 tahun."
+  },
+  {
+    nama: "Psyllium",
+    kataKunci: ["psyllium", "sembelit", "konstipasi", "susah buang air besar"],
+    kegunaan: "Serat yang dapat membantu melancarkan buang air besar.",
+    peringatan: "Minum dengan cairan yang cukup. Konsultasikan kepada tenaga kesehatan jika sembelit menetap atau disertai nyeri perut berat."
+  },
+  {
+    nama: "Larutan saline kumur",
+    kataKunci: ["sakit tenggorokan", "radang tenggorokan", "tenggorokan sakit"],
+    kegunaan: "Berkumur dengan air garam hangat dapat membantu meredakan sakit tenggorokan.",
+    peringatan: "Jangan ditelan. Cari pertolongan medis jika sulit bernapas atau menelan."
+  },
+  {
+    nama: "Kompres dingin",
+    kataKunci: ["bengkak ringan", "memar", "terkilir"],
+    kegunaan: "Membantu mengurangi nyeri dan pembengkakan ringan.",
+    peringatan: "Bungkus kompres dengan kain dan jangan tempelkan es langsung ke kulit."
+  },
+  {
+    nama: "Cairan dan istirahat",
+    kataKunci: ["pusing", "lemas", "kurang tidur"],
+    kegunaan: "Istirahat dan cukup minum dapat membantu jika keluhan berkaitan dengan kelelahan atau kekurangan cairan ringan.",
+    peringatan: "Pusing dapat memiliki banyak penyebab. Cari pertolongan darurat jika disertai pingsan, nyeri dada, kelemahan satu sisi, atau sakit kepala mendadak yang sangat berat."
+  },
+  {
+    nama: "Obat antimual",
+    kataKunci: ["obat antimual"],
+    kegunaan: "Pilihan obat antimual bergantung pada penyebab mual atau muntah dan kondisi pengguna.",
+    peringatan: "Konsultasikan kepada tenaga kesehatan sebelum memilih obat. Tidak semua obat antimual cocok untuk semua orang."
+
+    
+},
+
+  {
+    nama: "Paracetamol",
+    kataKunci: ["sakit telinga", "nyeri telinga"],
+    kegunaan: "Membantu meredakan nyeri telinga.",
+    peringatan: "Gunakan sesuai petunjuk pada kemasan. Jika nyeri berat, keluar cairan dari telinga, atau pendengaran menurun, segera periksa ke tenaga kesehatan."
+},
+{
+    nama: "Tetes telinga antibiotik",
+    kataKunci: ["sakit telinga", "nyeri telinga", "infeksi telinga"],
+    kegunaan: "Digunakan untuk infeksi bakteri tertentu sesuai hasil pemeriksaan.",
+    peringatan: "Harus berdasarkan pemeriksaan dan resep tenaga kesehatan. Tidak semua sakit telinga disebabkan oleh bakteri."
+},
+{
+    nama: "Tetes telinga antijamur",
+    kataKunci: ["sakit telinga", "infeksi jamur telinga"],
+    kegunaan: "Digunakan untuk mengatasi infeksi jamur pada telinga tertentu.",
+    peringatan: "Gunakan setelah diperiksa tenaga kesehatan. Jangan memakai tetes telinga sembarangan jika gendang telinga mungkin berlubang."
+},
+{
+    nama: "Larutan pelembap kulit",
+    kataKunci: ["kulit kering"],
+    kegunaan: "Membantu menjaga kelembapan dan mengurangi kulit kering.",
+    peringatan: "Pilih produk tanpa pewangi jika kulit sensitif. Hentikan jika terjadi iritasi."
+},
+{
+    nama: "Gel pelindung sariawan",
+    kataKunci: ["sariawan"],
+    kegunaan: "Membantu melindungi luka di mulut dan mengurangi rasa tidak nyaman.",
+    peringatan: "Pilih produk yang memang diperuntukkan bagi rongga mulut dan ikuti petunjuk kemasan."
+},
+{
+    nama: "Kompres dingin",
+    kataKunci: ["memar"],
+    kegunaan: "Membantu mengurangi bengkak dan rasa nyeri pada memar baru.",
+    peringatan: "Bungkus kompres dengan kain dan jangan menempelkan es langsung ke kulit."
+},
+{
+    nama: "Cetirizine",
+    kataKunci: ["biduran"],
+    kegunaan: "Antihistamin untuk membantu meredakan gatal akibat biduran.",
+    peringatan: "Dapat menyebabkan kantuk. Gunakan sesuai petunjuk tenaga kesehatan atau kemasan."
+},
+{
+    nama: "Alginat",
+    kataKunci: ["asam lambung"],
+    kegunaan: "Membantu mengurangi refluks asam pada sebagian orang dengan membentuk lapisan penghalang di atas isi lambung.",
+    peringatan: "Gunakan sesuai petunjuk produk dan konsultasikan jika gejala sering berulang."
+},
+{
+    nama: "Semprotan saline hidung",
+    kataKunci: ["hidung tersumbat"],
+    kegunaan: "Membantu melembapkan hidung dan mengencerkan lendir.",
+    peringatan: "Gunakan sesuai petunjuk produk dan jaga kebersihan alat."
+},
+{
+    nama: "Informasi penanganan lemas",
+    kataKunci: ["lemas"],
+    kegunaan: "Tidak ada satu obat khusus untuk semua penyebab lemas. Penanganan bergantung pada penyebabnya.",
+    peringatan: "Jangan mengonsumsi suplemen atau obat sembarangan. Periksa jika keluhan menetap atau memburuk."
+},
+{
+    nama: "Salbutamol inhaler",
+    kataKunci: ["sesak napas"],
+    kegunaan: "Obat bronkodilator yang membantu melebarkan saluran napas pada kondisi tertentu, seperti asma.",
+    peringatan: "Gunakan sesuai resep dan petunjuk tenaga kesehatan. Tidak semua sesak napas disebabkan oleh asma. Jika sesak berat, sulit berbicara, atau bibir membiru, segera cari pertolongan darurat."
+},
+{
+    nama: "Ibuprofen",
+    kataKunci: ["sakit kepala"],
+    kegunaan: "Membantu meredakan sakit kepala tertentu.",
+    peringatan: "Tidak cocok untuk semua orang. Hindari jika memiliki tukak lambung, penyakit ginjal tertentu, alergi NSAID, atau sedang hamil kecuali atas arahan tenaga kesehatan."
+},
+{
+    nama: "Obat sakit gigi topikal",
+    kataKunci: ["sakit gigi"],
+    kegunaan: "Produk tertentu dapat membantu meredakan nyeri sementara sesuai kandungan dan petunjuk penggunaannya.",
+    peringatan: "Gunakan hanya produk yang memang diperuntukkan bagi penggunaan di mulut. Jangan mengoleskan aspirin langsung ke gigi atau gusi."
+},
+{
+    nama: "Obat kumur antiseptik",
+    kataKunci: ["sakit gigi"],
+    kegunaan: "Membantu menjaga kebersihan mulut, tetapi tidak mengatasi semua penyebab sakit gigi.",
+    peringatan: "Gunakan sesuai petunjuk produk. Sakit gigi menetap atau disertai bengkak perlu diperiksa dokter gigi."
+},
+{
+    nama: "Air Mata Buatan",
+    kataKunci: ["mata merah"],
+    kegunaan: "Membantu meredakan mata kering dan iritasi ringan.",
+    peringatan: "Tidak mengatasi semua penyebab mata merah. Gunakan produk khusus mata sesuai petunjuk."
+},
+{
+    nama: "Tetes Mata Antihistamin",
+    kataKunci: ["mata merah"],
+    kegunaan: "Membantu meredakan mata merah dan gatal akibat alergi.",
+    peringatan: "Gunakan sesuai petunjuk kemasan atau saran tenaga kesehatan."
+},
+{
+    nama: "Gel atau Plester Hangat",
+    kataKunci: ["nyeri punggung"],
+    kegunaan: "Kompres hangat dapat membantu mengurangi kekakuan dan ketidaknyamanan otot.",
+    peringatan: "Bungkus sumber panas dengan kain dan hindari suhu terlalu tinggi."
+},
+{
+    nama: "Informasi Bantuan Tidur",
+    kataKunci: ["susah tidur"],
+    kegunaan: "Membantu memperbaiki kebiasaan tidur, seperti menjaga jadwal tidur teratur dan mengurangi kafein pada malam hari.",
+    peringatan: "Bukan obat tidur. Konsultasikan dengan tenaga kesehatan jika gangguan tidur terus berlanjut."
+},
+{
+    nama: "Larutan Pembersih Luka",
+    kataKunci: ["luka ringan"],
+    kegunaan: "Air bersih mengalir dapat digunakan untuk membilas kotoran dari luka ringan.",
+    peringatan: "Hindari menuangkan alkohol ke dalam luka. Perhatikan tanda infeksi dan status vaksin tetanus."
+},
+{
+    nama: "Obat Kumur Antiseptik",
+    kataKunci: ["gusi bengkak"],
+    kegunaan: "Produk tertentu dapat membantu mengendalikan plak sebagai bagian dari perawatan mulut.",
+    peringatan: "Gunakan sesuai petunjuk. Tidak menggantikan pemeriksaan dokter gigi."
+},
+];
+
+
+const aliasPencarianEnglish = {
+  "headache": "sakit kepala",
+  "toothache": "sakit gigi",
+  "sore throat": "sakit tenggorokan",
+  "earache": "sakit telinga",
+  "shortness of breath": "sesak napas",
+  "difficulty breathing": "sesak napas",
+  "fever": "demam",
+  "cough": "batuk",
+  "dry cough": "batuk kering",
+  "productive cough": "batuk berdahak",
+  "phlegm cough": "batuk berdahak",
+  "common cold": "pilek",
+  "runny nose": "pilek",
+  "nasal congestion": "hidung tersumbat",
+  "stuffy nose": "hidung tersumbat",
+  "diarrhea": "diare",
+  "indigestion": "maag",
+  "red eye": "mata merah",
+  "acid reflux": "asam lambung",
+  "allergy": "alergi",
+  "itching": "gatal",
+  "swollen gums": "gusi bengkak",
+  "hives": "biduran",
+  "constipation": "sembelit",
+  "difficulty sleeping": "susah tidur",
+  "insomnia": "susah tidur",
+  "menstrual cramps": "nyeri haid",
+  "muscle pain": "nyeri otot",
+  "abdominal pain": "nyeri perut",
+  "back pain": "nyeri punggung",
+  "bruise": "memar",
+  "dizziness": "pusing",
+  "nausea": "mual",
+  "vomiting": "muntah",
+  "fatigue": "lemas",
+  "weakness": "lemas",
+  "minor wound": "luka ringan",
+  "dehydration": "dehidrasi",
+  "dry skin": "kulit kering",
+  "mouth ulcer": "sariawan",
+  "paracetamol": "paracetamol",
+  "acetaminophen": "paracetamol",
+  "ibuprofen": "ibuprofen",
+  "antacid": "antasida",
+  "oral rehydration solution": "oralit",
+  "ors": "oralit",
+  "cetirizine": "cetirizine",
+  "vitamin c": "vitamin c",
+  "loratadine": "loratadine",
+  "honey": "madu",
+  "psyllium": "psyllium",
+  "salbutamol inhaler": "salbutamol inhaler"
+};
+function normalisasiKataPencarian(kata) {
+  const k = kata.trim().toLowerCase();
+  if ((mcStorage.getItem("medicareBahasa") || "id") === "en") return aliasPencarianEnglish[k] || k;
+  return k;
+}
+
+  const inputCari = document.getElementById('searchInput');
+
+const daftarSaran = [
+  "sakit kepala",
+  "sakit gigi",
+  "sakit tenggorokan",
+  "sakit telinga",
+  "sesak napas",
+  "demam",
+  "batuk",
+  "batuk kering",
+  "batuk berdahak",
+  "pilek",
+  "hidung tersumbat",
+  "diare",
+  "maag",
+  "mata merah",
+  "asam lambung",
+  "alergi",
+  "gatal",
+  "gusi bengkak",
+  "biduran",
+  "sembelit",
+  "susah tidur",
+  "nyeri haid",
+  "nyeri otot",
+  "nyeri perut",
+  "nyeri punggung",
+  "memar",
+  "pusing",
+  "mual",
+  "muntah",
+  "lemas",
+  "luka ringan",
+  "dehidrasi",
+  "kulit kering",
+  "sariawan",
+  "paracetamol",
+  "ibuprofen",
+  "antasida",
+  "oralit",
+  "cetirizine",
+  "vitamin c",
+  "loratadine",
+  "madu",
+  "psyllium"
+];
+
+const kotakSaran = document.createElement('div');
+
+kotakSaran.style.cssText = `
+  background: white;
+  border-radius: 12px;
+  margin-top: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: none;
+`;
+
+inputCari.insertAdjacentElement('afterend', kotakSaran);
+
+inputCari.addEventListener('input', function () {
+  const kata = this.value.trim().toLowerCase();
+  kotakSaran.replaceChildren();
+
+  if (!kata) {
+    kotakSaran.style.display = 'none';
+    return;
+  }
+
+  const bahasaEN = (mcStorage.getItem('medicareBahasa') || 'id') === 'en';
+  const englishLabel = Object.fromEntries(Object.entries(aliasPencarianEnglish).map(([en,id]) => [id,en]));
+  const hasilSaran = daftarSaran.filter(item => {
+    const label = bahasaEN ? (englishLabel[item] || item) : item;
+    return label.includes(kata) || item.includes(kata);
+  }).slice(0, 6);
+
+  if (hasilSaran.length === 0) {
+    kotakSaran.style.display = 'none';
+    return;
+  }
+
+  hasilSaran.forEach(item => {
+    const pilihan = document.createElement('div');
+
+    pilihan.textContent = '🔎  ' + ((mcStorage.getItem('medicareBahasa') || 'id') === 'en' ? ((Object.entries(aliasPencarianEnglish).find(([en,id]) => id === item) || [null,item])[0]) : item);
+    pilihan.style.cssText = `
+      padding: 12px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid #eeeeee;
+      color: #263238;
+      font-size: 14px;
+    `;
+
+    pilihan.addEventListener('click', function () {
+      inputCari.value = item;
+      kotakSaran.style.display = 'none';
+      inputCari.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter',
+          bubbles: true
+        })
+      );
+    });
+
+    kotakSaran.appendChild(pilihan);
+  });
+
+  kotakSaran.style.display = 'block';
+});
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+
+    const kataInput = this.value.trim().toLowerCase();
+    if (!kataInput) return;
+    const kata = normalisasiKataPencarian(kataInput);
+
+    const panel = document.getElementById('featurePanel');
+    panel.classList.remove('hidden');
+    panel.replaceChildren();
+
+    // Simpan maksimal 5 pencarian terakhir.
+    let riwayat = [];
+    try {
+        riwayat = JSON.parse(mcStorage.getItem('riwayatPencarian') || '[]');
+        if (!Array.isArray(riwayat)) riwayat = [];
+    } catch (err) {
+        riwayat = [];
+    }
+
+    riwayat = riwayat.filter(item => item !== kata);
+    riwayat.unshift(kata);
+    riwayat = riwayat.slice(0, 5);
+    mcStorage.setItem('riwayatPencarian', JSON.stringify(riwayat));
+
+    const daftarRiwayat = document.getElementById('daftarRiwayat');
+    if (daftarRiwayat) {
+        daftarRiwayat.replaceChildren();
+        riwayat.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.style.cursor = 'pointer';
+            li.addEventListener('click', () => {
+                inputCari.value = item;
+                inputCari.dispatchEvent(new KeyboardEvent('keydown', {
+                    key: 'Enter',
+                    bubbles: true
+                }));
+            });
+            daftarRiwayat.appendChild(li);
+        });
+    }
+
+    // Jika kata yang dicari adalah keluhan yang tersedia, tampilkan panduan keluhan.
+    const detail = detailKeluhan[kata];
+
+    if (detail) {
+        const judul = document.createElement('h3');
+        judul.textContent = '🩺 ' + terjemahkanKonten(detail.judul);
+
+        const gejala = document.createElement('p');
+        gejala.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Symptoms: ' : 'Gejala: ') + terjemahkanKonten(detail.gejala);
+
+        const perawatan = document.createElement('p');
+        perawatan.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Self-care: ' : 'Perawatan mandiri: ') + terjemahkanKonten(detail.perawatan);
+
+        const bahaya = document.createElement('p');
+        bahaya.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Warning signs: ' : 'Tanda bahaya: ') + terjemahkanKonten(detail.bahaya);
+
+        const judulObat = document.createElement('h4');
+        judulObat.textContent = (mcStorage.getItem('medicareBahasa') === 'en') ? '💊 Related Medicine or Care Information' : '💊 Informasi Obat atau Perawatan Terkait';
+
+        const daftarObat = document.createElement('div');
+
+        const obatTerkait = databaseObat.filter(obat =>
+            obat.kataKunci.some(k =>
+                k.toLowerCase() === kata ||
+                k.toLowerCase().includes(kata) ||
+                kata.includes(k.toLowerCase())
+            )
+        );
+
+        if (obatTerkait.length > 0) {
+            obatTerkait.forEach(obat => {
+                const kartu = document.createElement('div');
+                kartu.className = 'kartu-obat';
+                kartu.style.cssText = 'background:#fff;padding:12px;border-radius:10px;margin:10px 0;';
+
+                const nama = document.createElement('h4');
+                nama.textContent = terjemahkanKonten(obat.nama);
+
+                const kegunaan = document.createElement('p');
+                kegunaan.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Uses: ' : 'Kegunaan: ') + terjemahkanKonten(obat.kegunaan);
+
+                const perhatian = document.createElement('p');
+                perhatian.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Caution: ' : 'Perhatian: ') + terjemahkanKonten(obat.peringatan);
+
+                kartu.append(nama, kegunaan, perhatian);
+                daftarObat.appendChild(kartu);
+            });
+        } else {
+            daftarObat.textContent = 'Informasi terkait belum tersedia. Tanyakan kepada tenaga kesehatan atau apoteker.';
+        }
+
+        const catatan = document.createElement('p');
+        catatan.textContent = 'Informasi ini bukan diagnosis atau resep. Jangan memilih obat hanya berdasarkan gejala. Ikuti petunjuk kemasan dan konsultasikan kepada tenaga kesehatan atau apoteker.';
+
+        panel.append(judul, gejala, perawatan, bahaya, judulObat, daftarObat, catatan);
+        terapkanBahasa();
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
+    // Jika bukan nama keluhan yang cocok, cari obat berdasarkan nama atau kata kunci.
+    const hasil = databaseObat.filter(obat =>
+        obat.nama.toLowerCase().includes(kata) ||
+        obat.kataKunci.some(k =>
+            k.toLowerCase().includes(kata) || kata.includes(k.toLowerCase())
+        )
+    );
+
+    if (hasil.length === 0) {
+        const pesan = document.createElement('p');
+        pesan.textContent = 'Belum ada informasi yang cocok. Coba kata lain atau konsultasikan kepada tenaga kesehatan.';
+        panel.appendChild(pesan);
+        terapkanBahasa();
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
+    hasil.forEach(obat => {
+        const kartu = document.createElement('div');
+        kartu.style.cssText = 'background:#fff;padding:14px;border-radius:12px;margin:10px 0;';
+
+        const judulObat = document.createElement('h3');
+        judulObat.textContent = '💊 ' + obat.nama;
+
+        const kegunaan = document.createElement('p');
+        kegunaan.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Uses: ' : 'Kegunaan: ') + terjemahkanKonten(obat.kegunaan);
+
+        const peringatan = document.createElement('p');
+        peringatan.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Caution: ' : 'Perhatian: ') + terjemahkanKonten(obat.peringatan || obat.perhatian || 'Ikuti petunjuk pada kemasan dan tanyakan kepada apoteker jika ragu.');
+
+        const efek = document.createElement('p');
+        efek.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Possible side effects: ' : 'Efek samping: ') + terjemahkanKonten(obat.efekSamping || 'Efek samping bergantung pada produk dan kondisi pengguna. Periksa kemasan atau tanyakan kepada apoteker.');
+
+        const perhatian = document.createElement('p');
+        perhatian.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Important note: ' : 'Hal yang perlu diperhatikan: ') + terjemahkanKonten(obat.perhatian || obat.peringatan || 'Ikuti petunjuk kemasan. Konsultasikan jika sedang hamil, memiliki penyakit tertentu, atau menggunakan obat lain.');
+
+        const interaksi = document.createElement('p');
+        interaksi.textContent = (mcStorage.getItem('medicareBahasa') === 'en' ? 'Interactions: ' : 'Interaksi obat: ') + terjemahkanKonten(obat.interaksi || 'Interaksi dapat berbeda menurut obat dan kondisi pengguna. Tanyakan kepada apoteker sebelum menggabungkan obat.');
+
+        const tombolFavorit = document.createElement('button');
+        tombolFavorit.className = 'btn';
+
+        let favorit = [];
+        try {
+            favorit = JSON.parse(mcStorage.getItem('medicareFavorit') || '[]');
+            if (!Array.isArray(favorit)) favorit = [];
+        } catch (err) {
+            favorit = [];
+        }
+
+        tombolFavorit.textContent = favorit.includes(obat.nama)
+            ? '❤️ Hapus Favorit'
+            : '🤍 Tambah Favorit';
+
+        tombolFavorit.addEventListener('click', function() {
+            let daftarFavorit = [];
+            try {
+                daftarFavorit = JSON.parse(mcStorage.getItem('medicareFavorit') || '[]');
+                if (!Array.isArray(daftarFavorit)) daftarFavorit = [];
+            } catch (err) {
+                daftarFavorit = [];
+            }
+
+            if (daftarFavorit.includes(obat.nama)) {
+                daftarFavorit = daftarFavorit.filter(nama => nama !== obat.nama);
+                tombolFavorit.textContent = '🤍 Tambah Favorit';
+            } else {
+                daftarFavorit.push(obat.nama);
+                tombolFavorit.textContent = '❤️ Hapus Favorit';
+            }
+
+            mcStorage.setItem('medicareFavorit', JSON.stringify(daftarFavorit));
+        });
+
+        kartu.append(judulObat, kegunaan, peringatan, efek, perhatian, interaksi, tombolFavorit);
+
+        panel.appendChild(kartu);
+    });
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+const emailAktif = mcStorage.getItem('medicareDemoCurrent');
+
+if (emailAktif) {
+  const users = JSON.parse(
+    mcStorage.getItem('medicareDemoUsers') || '{}'
+  );
+
+  if (users[emailAktif]) {
+    openDashboard(users[emailAktif].name);
+  } else {
+    showPage('welcome');
+  }
+} else {
+  showPage('welcome');
+}
+const tombolHapus = document.getElementById('hapusRiwayat');
+
+if (tombolHapus) {
+    tombolHapus.addEventListener('click', function () {
+        mcStorage.removeItem('riwayatPencarian');
+
+        const daftar = document.getElementById('daftarRiwayat');
+        if (daftar) {
+            daftar.replaceChildren();
+        }
+    });
+}
+function simpanPengingat() {
+  const nama = document.getElementById('namaObat').value.trim();
+  const dosis = document.getElementById('dosisObat').value.trim();
+  const tanggal = document.getElementById('tanggalObat').value;
+  const jam = document.getElementById('jamObat').value;
+
+  if (!nama || !dosis || !tanggal || !jam) {
+    alert('Lengkapi semua data jadwal obat!');
+    return;
+  }
+
+  const jadwal = JSON.parse(
+    mcStorage.getItem('jadwalObat') || '[]'
+  );
+
+  jadwal.push({ nama, dosis, tanggal, jam, sudahMinum: false });
+
+  mcStorage.setItem('jadwalObat', JSON.stringify(jadwal));
+
+  alert('Jadwal obat berhasil disimpan! 💊');
+
+  bukaMenu('pengingat');
+}
+function tampilkanPengingat() {
+  const daftar = document.getElementById('daftarPengingat');
+  if (!daftar) return;
+
+  const jadwal = JSON.parse(
+    mcStorage.getItem('jadwalObat') || '[]'
+  );
+
+  if (jadwal.length === 0) {
+    daftar.textContent = 'Belum ada jadwal obat.';
+    return;
+  }
+
+  daftar.replaceChildren();
+
+  jadwal.forEach((obat, index) => {
+    const kartu = document.createElement('div');
+    kartu.className = 'card';
+
+    const nama = document.createElement('h3');
+    nama.textContent = '💊 ' + obat.nama;
+
+    const detail = document.createElement('p');
+    detail.textContent =
+      'Dosis: ' + obat.dosis +
+      ' | Tanggal: ' + obat.tanggal +
+      ' | Jam: ' + obat.jam;
+
+    const status = document.createElement('p');
+    status.textContent = obat.sudahMinum
+      ? '✅ Sudah diminum'
+      : '⏰ Belum diminum';
+
+    kartu.append(nama, detail, status);
+
+    if (!obat.sudahMinum) {
+      const tombolMinum = document.createElement('button');
+      tombolMinum.textContent = '✅ Sudah Minum';
+      tombolMinum.className = 'btn';
+
+      tombolMinum.onclick = () => {
+        const data = JSON.parse(
+          mcStorage.getItem('jadwalObat') || '[]'
+        );
+        data[index].sudahMinum = true;
+        mcStorage.setItem('jadwalObat', JSON.stringify(data));
+        tampilkanPengingat();
+      };
+
+      kartu.appendChild(tombolMinum);
+    }
+
+    const tombolHapus = document.createElement('button');
+    tombolHapus.textContent = '🗑️ Hapus';
+    tombolHapus.className = 'btn btn-light';
+
+    tombolHapus.onclick = () => {
+      const data = JSON.parse(
+        mcStorage.getItem('jadwalObat') || '[]'
+      );
+      data.splice(index, 1);
+      mcStorage.setItem('jadwalObat', JSON.stringify(data));
+      tampilkanPengingat();
+    };
+
+    kartu.appendChild(tombolHapus);
+    daftar.appendChild(kartu);
+  });
+}
+function mintaIzinNotifikasi() {
+  if (!("Notification" in window) || !window.isSecureContext || typeof Notification.requestPermission !== "function") {
+    alert("Notifikasi belum didukung pada cara membuka aplikasi ini. Jadwal obat tetap bisa disimpan dan dilihat di MediCare+.");
+    return;
+  }
+
+  Notification.requestPermission().then((izin) => {
+    if (izin === "granted") {
+  alert("Izin berhasil! Sekarang tes notifikasi.");
+
+  new Notification("Tes MediCare+ 🔔", {
+    body: "Notifikasi berhasil muncul!"
+  });
+} else {
+      alert("Izin notifikasi belum diberikan.");
+    }
+  });
+}
+
+function cekJadwalObat() {
+  if (!("Notification" in window) ||
+      Notification.permission !== "granted") {
+    return;
+  }
+
+  const jadwal = JSON.parse(
+    mcStorage.getItem("jadwalObat") || "[]"
+  );
+
+  const sekarang = new Date();
+  const tanggalHariIni =
+    sekarang.getFullYear() + "-" +
+    String(sekarang.getMonth() + 1).padStart(2, "0") + "-" +
+    String(sekarang.getDate()).padStart(2, "0");
+
+  const jamSekarang =
+    String(sekarang.getHours()).padStart(2, "0") + ":" +
+    String(sekarang.getMinutes()).padStart(2, "0");
+
+  jadwal.forEach((obat, index) => {
+    const kunci = tanggalHariIni + "_" + index;
+
+    if (
+      obat.tanggal === tanggalHariIni &&
+      obat.jam === jamSekarang &&
+      !obat.sudahMinum &&
+      mcStorage.getItem("notifikasi_" + kunci) !== "terkirim"
+    ) {
+      new Notification("⏰ Waktunya Minum Obat!", {
+        body: obat.nama + " — Dosis: " + obat.dosis
+      });
+
+      mcStorage.setItem("notifikasi_" + kunci, "terkirim");
+    }
+  });
+}
+
+setInterval(() => { try { cekJadwalObat(); } catch (e) {} }, 15000);
+
+// Apply the saved language when the app loads.
+document.addEventListener('DOMContentLoaded', terapkanBahasa);
+
+
+function tampilkanTandaBahaya() {
+    const panel = document.getElementById('featurePanel');
+    if (!panel) return;
+    panel.replaceChildren();
+    panel.classList.remove('hidden');
+
+    const judul = document.createElement('h3');
+    judul.textContent = '🚨 Kenali Tanda Bahaya';
+    const intro = document.createElement('p');
+    intro.textContent = 'Segera cari pertolongan medis darurat jika seseorang mengalami salah satu tanda berikut:';
+    const daftar = document.createElement('ul');
+    [
+        'Sesak napas berat, bibir membiru, atau sulit berbicara karena kehabisan napas.',
+        'Nyeri atau tekanan dada yang berat, terutama jika disertai keringat dingin atau mual.',
+        'Wajah mencong, kelemahan mendadak pada satu sisi tubuh, atau bicara pelo.',
+        'Pingsan, kejang yang berlangsung lama/berulang, atau sulit dibangunkan.',
+        'Perdarahan berat, reaksi alergi dengan pembengkakan lidah/tenggorokan, atau kondisi yang memburuk cepat.'
+    ].forEach(teks => {
+        const li = document.createElement('li');
+        li.textContent = teks;
+        daftar.appendChild(li);
+    });
+    const bantuan = document.createElement('p');
+    bantuan.className = 'notice';
+    bantuan.textContent = 'Jangan menunggu aplikasi memberi diagnosis. Hubungi layanan darurat setempat atau pergi ke IGD. Di Indonesia, nomor darurat medis 119 dapat digunakan di wilayah yang menyediakan layanan tersebut.';
+    const catatan = document.createElement('p');
+    catatan.textContent = 'Daftar ini bukan daftar lengkap dan tidak menggantikan penilaian tenaga kesehatan.';
+    panel.append(judul, intro, daftar, bantuan, catatan);
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function tampilkanArtikelEdukasi() {
+    const panel = document.getElementById('featurePanel');
+    if (!panel) return;
+    panel.replaceChildren();
+    panel.classList.remove('hidden');
+
+    const judul = document.createElement('h3');
+    judul.textContent = '📚 Artikel Edukasi Kesehatan';
+    const intro = document.createElement('p');
+    intro.textContent = 'Pilih topik untuk membaca ringkasan edukasi.';
+    panel.append(judul, intro);
+
+    const artikel = [
+        {judul:'🧼 Kebersihan tangan', isi:'Cuci tangan dengan sabun dan air mengalir, terutama sebelum makan, setelah dari toilet, dan setelah batuk atau bersin. Jika tidak tersedia, gunakan hand sanitizer berbasis alkohol.'},
+        {judul:'💧 Cegah dehidrasi', isi:'Minum cairan secara teratur. Saat diare atau muntah, larutan oralit dapat membantu mengganti cairan dan elektrolit yang hilang. Cari bantuan medis jika tidak mampu minum, sangat lemas, atau buang air kecil sangat sedikit.'},
+        {judul:'💊 Gunakan obat dengan aman', isi:'Baca label dan aturan pakai, periksa bahan aktif agar tidak menggandakan obat sejenis, dan tanyakan kepada apoteker atau tenaga kesehatan bila sedang hamil, memiliki penyakit tertentu, atau menggunakan obat lain.'},
+        {judul:'😴 Kebiasaan tidur sehat', isi:'Usahakan jadwal tidur yang teratur, kurangi kafein menjelang malam, dan buat kamar nyaman serta tenang. Jika gangguan tidur menetap atau mengganggu aktivitas, konsultasikan kepada tenaga kesehatan.'},
+        {judul:'🥗 Pola makan seimbang', isi:'Variasikan makanan dengan sayur, buah, sumber protein, dan biji-bijian. Sesuaikan kebutuhan dengan kondisi kesehatan masing-masing dan ikuti saran tenaga kesehatan bila memiliki kondisi khusus.'}
+    ];
+
+    artikel.forEach(item => {
+        const kartu = document.createElement('details');
+        kartu.className = 'artikel-edukasi';
+        const ringkas = document.createElement('summary');
+        ringkas.textContent = item.judul;
+        const isi = document.createElement('p');
+        isi.textContent = item.isi;
+        kartu.append(ringkas, isi);
+        panel.appendChild(kartu);
+    });
+    const disclaimer = document.createElement('p');
+    disclaimer.textContent = 'Informasi ini bersifat edukasi umum, bukan diagnosis atau pengganti konsultasi medis.';
+    panel.appendChild(disclaimer);
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function cariCepat(keluhan) {
+    const input = document.getElementById('searchInput');
+
+    if (!input) return;
+
+    input.value = keluhan;
+
+    input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            key: 'Enter',
+            bubbles: true
+        })
+    );
+}
+
+function simpanCatatanKesehatan() {
+    const keluhan = document.getElementById('catatanKeluhan').value.trim();
+    const tingkat = Number(document.getElementById('catatanTingkat').value);
+    const keterangan = document.getElementById('catatanKeterangan').value.trim();
+
+    if (!keluhan) {
+        alert('Isi keluhan yang kamu rasakan dulu, ya.');
+        return;
+    }
+
+    if (tingkat < 1 || tingkat > 10 || !Number.isInteger(tingkat)) {
+        alert('Tingkat keluhan harus angka 1 sampai 10.');
+        return;
+    }
+
+    const catatan = {
+        keluhan,
+        tingkat,
+        keterangan,
+        tanggal: new Date().toLocaleString('id-ID')
+    };
+
+    let daftar = JSON.parse(
+        mcStorage.getItem('medicareCatatanKesehatan') || '[]'
+    );
+
+    daftar.unshift(catatan);
+    mcStorage.setItem('medicareCatatanKesehatan', JSON.stringify(daftar));
+
+    document.getElementById('catatanKeluhan').value = '';
+    document.getElementById('catatanTingkat').value = '3';
+    document.getElementById('catatanKeterangan').value = '';
+
+    tampilkanCatatanKesehatan();
+    alert('Catatan berhasil disimpan!');
+}
+
+function tampilkanCatatanKesehatan() {
+    const wadah = document.getElementById('daftarCatatanKesehatan');
+    if (!wadah) return;
+
+    const daftar = JSON.parse(
+        mcStorage.getItem('medicareCatatanKesehatan') || '[]'
+    );
+
+    wadah.replaceChildren();
+
+    if (!daftar.length) {
+        wadah.textContent = 'Belum ada catatan kesehatan.';
+        return;
+    }
+
+    daftar.forEach(catatan => {
+        const kartu = document.createElement('div');
+        kartu.className = 'notice';
+
+        const judul = document.createElement('h3');
+        judul.textContent = catatan.keluhan;
+
+        const tanggal = document.createElement('p');
+        tanggal.textContent = catatan.tanggal;
+
+        const tingkat = document.createElement('p');
+        tingkat.textContent = 'Tingkat keluhan: ' + catatan.tingkat + '/10';
+
+        const keterangan = document.createElement('p');
+        keterangan.textContent = catatan.keterangan || 'Tidak ada keterangan.';
+
+        kartu.append(judul, tanggal, tingkat, keterangan);
+        wadah.appendChild(kartu);
+    });
+}
+
+function bukaCatatanKesehatan() {
+    document.getElementById('kontenBeranda').classList.add('hidden');
+    document.getElementById('halamanMenu').classList.add('hidden');
+    document.getElementById('catatanKesehatan').classList.remove('hidden');
+
+    tampilkanCatatanKesehatan();
+}
+
+</script>
+</body>
+</html>
